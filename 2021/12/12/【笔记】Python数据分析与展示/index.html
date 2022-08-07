@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bugmakerh.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文档为个人笔记整理。 原课程为发布于“中国大学MOOC”平台的由北京理工大学嵩天老师主讲的《Python 数据分析与展示》课程。故本文档引用了课程中部分源代码、图片等相关资源。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Python数据分析与展示">
+<meta property="og:url" content="http://bugmakerh.xyz/2021/12/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA/index.html">
+<meta property="og:site_name" content="BugMaker&#39;s Blog">
+<meta property="og:description" content="本文档为个人笔记整理。 原课程为发布于“中国大学MOOC”平台的由北京理工大学嵩天老师主讲的《Python 数据分析与展示》课程。故本文档引用了课程中部分源代码、图片等相关资源。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://bugmakerh.xyz/0-0.png">
+<meta property="og:image" content="http://bugmakerh.xyz/pic/1-1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/pic/1-2.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-3.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-4.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-5.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-6.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-7.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-8.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-9.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-10.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-11.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-12.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-13.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-14.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-15.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-16.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-17.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-18.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-19.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-20.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-21.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-22.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-23.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-24.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-25.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-26.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-27.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-28.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-29.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-30.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-31.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-32.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-33.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-34.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-35.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-36.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-37.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-38.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-39.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-40.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-41.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-42.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-43.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-44.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-45.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-46.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-47.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-48.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-49.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-2.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-3.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-4.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-5.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-6.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-9.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-10.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-11.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-12.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-13.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-14.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-7.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-8.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-15.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-16.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-17.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-18.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-19.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-2.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-3.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-4.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-5.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-6.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-7.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-8.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-9.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-10.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-11.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-12.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-13.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-14.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-15.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-16.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-17.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-18.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-19.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-20.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-21.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-22.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-23.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-24.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-35.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-25.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-26.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-27.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-28.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-29.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-30.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-31.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-32.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-33.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-34.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-36.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-37.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-38.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-39.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-40.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-41.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-42.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/3-43.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/1-50.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/2-20.jpg">
+<meta property="article:published_time" content="2021-12-12T15:47:33.000Z">
+<meta property="article:modified_time" content="2022-08-07T02:16:05.391Z">
+<meta property="article:author" content="BugMaker">
+<meta property="article:tag" content="Artificial Intelligence">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Data Science">
+<meta property="article:tag" content="中国大学MOOC">
+<meta property="article:tag" content="Open Course">
+<meta property="article:tag" content="NumPy">
+<meta property="article:tag" content="Matplotlib">
+<meta property="article:tag" content="Pandas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://bugmakerh.xyz/0-0.png">
+
+<link rel="canonical" href="http://bugmakerh.xyz/2021/12/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>【笔记】Python数据分析与展示 | BugMaker's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?19d35097db41e3515c1116cf79269ba2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">BugMaker's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello World!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-pasteme">
+
+    <a href="http://pasteme.bugmakerh.xyz/" rel="noopener" target="_blank"><i class="fa fa-edit fa-fw"></i>PasteMe</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/BugMakerH" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://bugmakerh.xyz/2021/12/12/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="BugMaker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BugMaker's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【笔记】Python数据分析与展示
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-12 23:47:33" itemprop="dateCreated datePublished" datetime="2021-12-12T23:47:33+08:00">2021-12-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-07 10:16:05" itemprop="dateModified" datetime="2022-08-07T10:16:05+08:00">2022-08-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming-Language/" itemprop="url" rel="index"><span itemprop="name">Programming Language</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文档为个人笔记整理。</p>
+<p>原课程为发布于“中国大学MOOC”平台的由北京理工大学嵩天老师主讲的《<a target="_blank" rel="noopener" href="https://www.icourse163.org/course/BIT-1001870002">Python 数据分析与展示</a>》课程。故本文档引用了课程中部分源代码、图片等相关资源。</p>
+<span id="more"></span>
+
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><h2 id="课程简介"><a href="#课程简介" class="headerlink" title="课程简介"></a>课程简介</h2><p>《Python 数据分析与展示》的官方课程简介如下：</p>
+<blockquote>
+<p>本课程面向各类编程学习者，讲解利用 Python 语言表达N维数据并结合数据特点合理展示数据的技术和方法，帮助学习者掌握表示、清洗、统计和展示数据的能力。</p>
+<p>本课程介绍 Python 计算生态中最优秀的数据分析和展示技术，所讲授内容是数据领域最优秀的编程模块，在理学、工程、信息、管理、经济等学科领域具有极其广泛的应用潜力。</p>
+<p>本课程共包括 4 周内容，分别讲解：</p>
+<ol>
+<li>Python 第三方库 NumPy，讲解 N 维数据的表达及科学计算的基本概念和运算方法；</li>
+<li>Python 第三方库 Matplotlib，讲解绘制坐标系、散点图、极坐标图等直观展示数据趋势和特点的方法；</li>
+<li>Python 第三方库 Pandas，强大的专业级数据分析和处理第三方库，介绍并讲解 Series 和 DataFrame 数据类型的表示和基本使用。</li>
+</ol>
+<p>该课程希望传递“理解和运用计算生态，培养集成创新思维”的理念，重点培养学习者运用当代最优秀第三方专业资源，快速分析和解决问题的能力。</p>
+<p><img src="/0-0.png" alt="0-0"></p>
+</blockquote>
+<p>《Python 数据分析与展示》的课程大纲如下：</p>
+<blockquote>
+<p>01【第〇周】数据分析之前奏</p>
+<p>​		课时</p>
+<p>​		“数据分析”课程内容导学</p>
+<p>​		Python语言开发工具选择</p>
+<p>​		Anaconda IDE的基本使用方法</p>
+<p>02【第一周】数据分析之表示</p>
+<p>​		课时</p>
+<p>​		本周课程导学</p>
+<p>​		单元1：NumPy库入门</p>
+<p>​		单元2：NumPy数据存取与函数</p>
+<p>​		单元3：实例1：图像的手绘效果</p>
+<p>03【第二周】数据分析之展示</p>
+<p>​		课时</p>
+<p>​		本周课程导学</p>
+<p>​		单元4：Matplotlib库入门</p>
+<p>​		单元5：Matplotlib基础绘图函数示例（5个实例）</p>
+<p>​		单元6：实例2：引力波的绘制</p>
+<p>04【第三周】数据分析之概要</p>
+<p>​		课时</p>
+<p>​		本周课程导学</p>
+<p>​		单元7：Pandas库入门</p>
+<p>​		单元8：Pandas数据特征分析</p>
+</blockquote>
+<h2 id="库文件官网参考"><a href="#库文件官网参考" class="headerlink" title="库文件官网参考"></a>库文件官网参考</h2><ol>
+<li>Python NumPy: <a target="_blank" rel="noopener" href="https://www.numpy.org/">https://www.numpy.org/</a></li>
+<li>Python Matplotlib: <a target="_blank" rel="noopener" href="https://matplotlib.org/">https://matplotlib.org/</a></li>
+<li>Python Pandas: <a target="_blank" rel="noopener" href="https://pandas.pydata.org/">https://pandas.pydata.org/</a></li>
+</ol>
+<h1 id="NumPy-库"><a href="#NumPy-库" class="headerlink" title="NumPy 库"></a>NumPy 库</h1><h2 id="NumPy-概述"><a href="#NumPy-概述" class="headerlink" title="NumPy 概述"></a>NumPy 概述</h2><p>NumPy 是一个开源的 Python 科学计算基础库。</p>
+<ul>
+<li>一个强大的N维数组对象 ndarray</li>
+<li>广播功能函数</li>
+<li>整合 C&#x2F;C++&#x2F;Fortran 代码的工具</li>
+<li>线性代数、傅里叶变换、随机数生成等功能</li>
+</ul>
+<p>NumPy 是 SciPy、Pandas 等数据处理或科学计算库的基础。</p>
+<h2 id="ndarray（N维数组对象）"><a href="#ndarray（N维数组对象）" class="headerlink" title="ndarray（N维数组对象）"></a>ndarray（N维数组对象）</h2><h3 id="ndarray-概述"><a href="#ndarray-概述" class="headerlink" title="ndarray 概述"></a>ndarray 概述</h3><ol>
+<li><p>ndarray 是一个多为数组对象，由两部分构成：</p>
+<ul>
+<li><p>实际的数据</p>
+</li>
+<li><p>描述这些数据的元数据（数据维度、数据类型等）</p>
+</li>
+</ul>
+</li>
+<li><p>ndarray 数组一般要求所有元素类型相同（同质），数组下标从 0 开始。</p>
+</li>
+<li><p>ndarray 两个基本的概念：</p>
+<ul>
+<li><p>轴(axis)：保存数据的维度</p>
+</li>
+<li><p>秩(rank)：轴的数量</p>
+</li>
+</ul>
+</li>
+<li><p>ndarray 对象的基本属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.ndim</td>
+<td>秩，即轴的数量或维度的数量</td>
+</tr>
+<tr>
+<td>.shape</td>
+<td>ndarray对象的尺度，对于矩阵，n行m列</td>
+</tr>
+<tr>
+<td>.size</td>
+<td>ndarray对象元素的个数，相当于.shape中n*m的值</td>
+</tr>
+<tr>
+<td>.dtype</td>
+<td>ndarray对象的元素类型</td>
+</tr>
+<tr>
+<td>.itemsize</td>
+<td>ndarray对象中每个元素的大小，以字节为单位</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>ndarray 的元素类型</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bool</td>
+<td>布尔类型，True或False</td>
+</tr>
+<tr>
+<td>intc</td>
+<td>与C语言中的int类型一致，一般是int32或int64</td>
+</tr>
+<tr>
+<td>intp</td>
+<td>用于索引的整数，与C语言中ssize_t一致，int32或int64</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>字节长度的整数，取值：[-128, 127]</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>16位长度的整数，取值：[-32768, 32767]</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>32位长度的整数，取值：[-2^31^, 2^31^-1]</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>64位长度的整数，取值：[-2^63^, 2^63^-1]</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>8位无符号整数，取值：[0, 255]</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>16位无符号整数，取值：[0, 65535]</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>32位无符号整数，取值：[0, 2^32^-1]</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>64位无符号整数，取值：[0, 2^64^-1]</td>
+</tr>
+<tr>
+<td>float16</td>
+<td>16位半精度浮点数：1位符号位，5位指数，10位尾数</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>32位半精度浮点数：1位符号位，8位指数，23位尾数</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>64位半精度浮点数：1位符号位，11位指数，52位尾数</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>复数类型，实部和虚部都是32位浮点数</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>复数类型，实部和虚部都是64位浮点数</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>​		<em>复数类型由实部 i(.real)和虚部 j(.imag)组成</em></p>
+<h3 id="ndarray-实例"><a href="#ndarray-实例" class="headerlink" title="ndarray 实例"></a>ndarray 实例</h3><p>由In、Out 和 [ ] 组成的就是 IPython 的提示符。</p>
+<p>实例代码如下：</p>
+<p><img src="/./pic/1-1.jpg" alt="1-1"></p>
+<p><strong>In[2]</strong>: 使用 np.array() 生成一个 ndarray 数组。（ndarray 在 numpy 程序中的别名是：array）</p>
+<p><strong>Out[3]</strong>: ndarray 在直接显示的时候开头由 array 表示数据类型。</p>
+<p><strong>In[4]</strong>: 我们也可以使用 print 将其输出，np.array() 输出成 [ ] 形式，元素由空格分割。</p>
+<p><img src="/./pic/1-2.jpg" alt="1-2"></p>
+<p><strong>Out[5]</strong>: 表示 array 中有两个维度。</p>
+<p><strong>Out[6]</strong>: 表示第一个维度有 2 个方向，第二个维度有 5 个元素。</p>
+<p><strong>Out[7]</strong>: 表示这个数组中包含 10 个元素。</p>
+<p><strong>Out[8]</strong>: 表示该数组的元素类型为”int32”。</p>
+<p><strong>Out[9]</strong>: 表示每个元素由 4 个字节构成。</p>
+<p><img src="/1-3.jpg" alt="1-3"></p>
+<p><strong>In[10]</strong>: 生成非同质 ndarray 数组。</p>
+<p><strong>Out[12]</strong>: 表示该数组的元素类型为对象。</p>
+<p><em>非同质的ndarray对象无法有效发挥NumPy优势，尽量避免使用。</em></p>
+<h3 id="ndarray-创建方法"><a href="#ndarray-创建方法" class="headerlink" title="ndarray 创建方法"></a>ndarray 创建方法</h3><ul>
+<li><p>从 Python 中的列表、元组等类型创建 ndarray 数组。	</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array(<span class="built_in">list</span>/<span class="built_in">tuple</span>)</span><br><span class="line">x = np.array(<span class="built_in">list</span>/<span class="built_in">tuple</span>, dtype=np.float32)</span><br></pre></td></tr></table></figure>
+
+<p>当 np.array() 不指定 dtype 时，NumPy 将根据数据情况关联一个 dtype 类型。</p>
+<p>示例代码如下：</p>
+<p><img src="/1-4.jpg" alt="1-4"></p>
+<p><strong>In[16]</strong>: 从列表类型创建</p>
+<p><strong>In[18]</strong>: 从元组类型创建</p>
+<p><strong>In[20]</strong>: 从列表和元组混合类型创建</p>
+</li>
+<li><p>使用 NumPy 中函数创建 ndarray 数组，如：arange、ones、zeros 等。</p>
+<p>常用函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>np.arange(n)</td>
+<td>类似range()函数，返回ndarray类型，元素从0到n-1</td>
+</tr>
+<tr>
+<td>np.ones(shape)</td>
+<td>根据shape生成一个全1数组，shape是元组类型</td>
+</tr>
+<tr>
+<td>np.zeros(shape)</td>
+<td>根据shape生成一个全0数组，shape是元组类型</td>
+</tr>
+<tr>
+<td>np.full(shape, val)</td>
+<td>根据shape生成一个数组，每个元素值都是val</td>
+</tr>
+<tr>
+<td>np.eye(n)</td>
+<td>创建一个正方的n*n单位矩阵，对角线为1，其余为0</td>
+</tr>
+<tr>
+<td>np.ones_like(a)</td>
+<td>根据数组a的形状生成一个全1数组</td>
+</tr>
+<tr>
+<td>np.zeros_like(a)</td>
+<td>根据数组a的形状生成一个全0数组</td>
+</tr>
+<tr>
+<td>np.full_like(a, val)</td>
+<td>根据数组a的形状生成一个数组，每个元素值都是val</td>
+</tr>
+<tr>
+<td>np.linspace()</td>
+<td>根据起止数据等间距地填充数据，形成数组</td>
+</tr>
+<tr>
+<td>np.concatenate()</td>
+<td>将两个或多个数组合并成一个新的数组</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/1-5.jpg" alt="1-5"></p>
+<p><img src="/1-6.jpg" alt="1-6"></p>
+<p><strong>In[41]</strong>: endpoint 表示最后一个元素 10 是否是生成的 4 个元素中的一个，该值默认为 True。</p>
+<p><em>ones、zeros、eye、linspace 函数生成的数组，默认数据类型为浮点型；arange 函数生成的数组，默认数据类型为整数类型。</em></p>
+</li>
+<li><p>从字节流(raw bytes)中创建 ndarray 数组。</p>
+</li>
+<li><p>从文件中读取特定格式，创建 ndarray 数组。</p>
+</li>
+</ul>
+<h3 id="ndarray-变换"><a href="#ndarray-变换" class="headerlink" title="ndarray 变换"></a>ndarray 变换</h3><h4 id="维度变换"><a href="#维度变换" class="headerlink" title="维度变换"></a>维度变换</h4><p>常用函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.reshape(shape)</td>
+<td>不改变数组元素，返回一个shape形状的数组，原数组不变</td>
+</tr>
+<tr>
+<td>.resize(shape)</td>
+<td>与.reshape()功能一致，但修改原数组</td>
+</tr>
+<tr>
+<td>.swapaxes(ax1, ax2)</td>
+<td>将数组n个维度中两个维度进行调换</td>
+</tr>
+<tr>
+<td>.flatten()</td>
+<td>对数组进行降维，返回折叠后的一维数组，原数组不变</td>
+</tr>
+</tbody></table>
+<p><em>reshape 函数需要保证数组整体个数不变。</em></p>
+<p>示例代码如下：</p>
+<p><img src="/1-7.jpg" alt="1-7"></p>
+<p><img src="/1-8.jpg" alt="1-8"></p>
+<p><img src="/1-9.jpg" alt="1-9"></p>
+<h4 id="类型变换"><a href="#类型变换" class="headerlink" title="类型变换"></a>类型变换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_a = a.astype(new_type)</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<p><img src="/1-10.jpg" alt="1-10"></p>
+<p><em>astype() 方法一定会创建新的数组（原始数据的一个拷贝），即使两个类型一致。</em></p>
+<h4 id="转为列表"><a href="#转为列表" class="headerlink" title="转为列表"></a>转为列表</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls = a.tolist()</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<p><img src="/1-11.jpg" alt="1-11"></p>
+<h3 id="ndarray-索引和切片"><a href="#ndarray-索引和切片" class="headerlink" title="ndarray 索引和切片"></a>ndarray 索引和切片</h3><p>索引：获取数组中特定位置元素的过程</p>
+<p>切片：获取数组元素子集的过程</p>
+<h4 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h4><p>与Python的列表类似。</p>
+<p>示例代码如下：</p>
+<p><img src="/1-12.jpg" alt="1-12"></p>
+<p><strong>In[67]</strong>: （起始编号 : 终止编号（不含） : 步长）</p>
+<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><h5 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h5><p>示例代码如下：</p>
+<p><img src="/1-13.jpg" alt="1-13"></p>
+<p><em>每个维度一个索引值，逗号分割</em></p>
+<h5 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h5><p>示例代码如下：</p>
+<p><img src="/1-14.jpg" alt="1-14"></p>
+<p><strong>In[75]</strong>: 选取一个维度用“ : ”</p>
+<p><strong>In[76]</strong>: 每个维度切片方法与一维数组相同</p>
+<p><strong>In[77]</strong>: 每个维度可以使用步长跳跃切片</p>
+<h3 id="ndarray-运算"><a href="#ndarray-运算" class="headerlink" title="ndarray 运算"></a>ndarray 运算</h3><h4 id="数组与标量之间的运算"><a href="#数组与标量之间的运算" class="headerlink" title="数组与标量之间的运算"></a>数组与标量之间的运算</h4><p>数组与标量之间的运算作用于数组的每一个元素。</p>
+<p>示例代码如下：</p>
+<p><img src="/1-15.jpg" alt="1-15"></p>
+<h4 id="一元函数"><a href="#一元函数" class="headerlink" title="一元函数"></a>一元函数</h4><p>对ndarray中的数据执行元素级运算的函数，其常用函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>np.abs(x) &#x2F; np.fabs(x)</td>
+<td>计算数组各元素的绝对值</td>
+</tr>
+<tr>
+<td>np.sqrt(x)</td>
+<td>计算数组各元素的平方根</td>
+</tr>
+<tr>
+<td>np.square(x)</td>
+<td>计算数组各元素的平方</td>
+</tr>
+<tr>
+<td>np.log(x) &#x2F; np.log10(x) &#x2F; np.log2(x)</td>
+<td>计算数组各元素的自然对数&#x2F;10底对数&#x2F;2底对数</td>
+</tr>
+<tr>
+<td>np.ceil(x) &#x2F; np.floor(x)</td>
+<td>计算数组各元素的ceiling值或floor值</td>
+</tr>
+<tr>
+<td>np.rint(x)</td>
+<td>计算数组各元素的四舍五入值</td>
+</tr>
+<tr>
+<td>np.modf(x)</td>
+<td>将数组各元素的小数和整数部分以两个独立数组的形式返回</td>
+</tr>
+<tr>
+<td>np.cos(x) &#x2F; np.cosh(x) &#x2F; np.sin(x) &#x2F; np.sinh(x) &#x2F; np.tan(x) &#x2F; np.tanh(x)</td>
+<td>计算数组各元素的普通型和双曲型三角函数</td>
+</tr>
+<tr>
+<td>np.exp(x)</td>
+<td>计算数组各元素的指数值</td>
+</tr>
+<tr>
+<td>np.sign(x)</td>
+<td>计算数组各元素的符号值，1(+)，0，-1(-)</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/1-16.jpg" alt="1-16"></p>
+<p><em>注意数组是否被真实改变</em></p>
+<h4 id="二元函数"><a href="#二元函数" class="headerlink" title="二元函数"></a>二元函数</h4><p>常用运算符与函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+ - * &#x2F; **</td>
+<td>两个数组各元素进行对应运算</td>
+</tr>
+<tr>
+<td>np.maximum(x, y) &#x2F; np.fmax() &#x2F; np.minumun(x, y) &#x2F; np.fmin()</td>
+<td>元素级的最大值&#x2F;最小值计算</td>
+</tr>
+<tr>
+<td>np.mod(x, y)</td>
+<td>元素级的模运算</td>
+</tr>
+<tr>
+<td>np.copysign(x, y)</td>
+<td>将数组y中各元素的符号赋值给数组x对应元素</td>
+</tr>
+<tr>
+<td>&gt; &lt; &gt;&#x3D; &lt;&#x3D; &#x3D;&#x3D; !&#x3D;</td>
+<td>算术比较，产生布尔型数组</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/1-17.jpg" alt="1-17"></p>
+<p><strong>Out[92]</strong>: 如果a和b的数据类型不同，那么运算结果为浮点数。</p>
+<h2 id="文件存取"><a href="#文件存取" class="headerlink" title="文件存取"></a>文件存取</h2><h3 id="CSV文件（一维-x2F-二维数组存取）"><a href="#CSV文件（一维-x2F-二维数组存取）" class="headerlink" title="CSV文件（一维&#x2F;二维数组存取）"></a>CSV文件（一维&#x2F;二维数组存取）</h3><p>CSV（Comma-Separated Value，逗号分隔值）</p>
+<p>局限性：CSV只能有效存储一维和二维数组</p>
+<h4 id="文件示例"><a href="#文件示例" class="headerlink" title="文件示例"></a>文件示例</h4><p>原始数据：</p>
+<p><img src="/1-18.jpg" alt="1-18"></p>
+<p>CSV文件数据：</p>
+<p><img src="/1-19.jpg" alt="1-19"></p>
+<h4 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.savetxt(frame, array, fmt=<span class="string">&#x27;%.18e&#x27;</span>, delimiter=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件、字符串或产生式，可以是.gz或.bz2的压缩格式。</li>
+<li>array: 存入文件的数组。</li>
+<li>fmt: 写入文件的格式，例如：%d、%.2f、%.18e。</li>
+<li>delimiter: 分割字符串，默认是任何空格。</li>
+</ul>
+<p>示例代码1如下：</p>
+<p><img src="/1-20.jpg" alt="1-20"></p>
+<p>CSV文件内容如下：</p>
+<p><img src="/1-21.jpg" alt="1-21"></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-22.jpg" alt="1-22"></p>
+<p>CSV文件内容如下：</p>
+<p><img src="/1-23.jpg" alt="1-23"></p>
+<h4 id="读入文件"><a href="#读入文件" class="headerlink" title="读入文件"></a>读入文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np = loadtxt(frame, dtype=np.<span class="built_in">float</span>, delimiter=<span class="literal">None</span>,unpack=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件、字符串或产生式，可以是.gz或.bz2的压缩文件。</li>
+<li>dtype: 数据类型，可选。</li>
+<li>delimiter: 分割字符串，默认是任何空格。</li>
+<li>unpack: 如果True，读入属性将分别写入不同变量。</li>
+</ul>
+<p>示例代码1如下：</p>
+<p><img src="/1-24.jpg" alt="1-24"></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-25.jpg" alt="1-25"></p>
+<h3 id="多维数组存取"><a href="#多维数组存取" class="headerlink" title="多维数组存取"></a>多维数组存取</h3><h4 id="写入文件-1"><a href="#写入文件-1" class="headerlink" title="写入文件"></a>写入文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.tofile(frame, sep=<span class="string">&quot;&quot;</span>, <span class="built_in">format</span>=<span class="string">&quot;%s&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件、字符串。</li>
+<li>sep: 数据分割字符串，如果是空串，写入文件为二进制。</li>
+<li>format: 写入数据的格式。</li>
+</ul>
+<p>示例代码1如下：</p>
+<p><img src="/1-26.jpg" alt="1-26"></p>
+<p>文件内容如下：</p>
+<p><img src="/1-27.jpg" alt="1-27"></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-28.jpg" alt="1-28"></p>
+<p>文件内容如下：</p>
+<p><img src="/1-29.jpg" alt="1-29"></p>
+<p><em>文件为二进制编码，所以无法正常显示。</em></p>
+<h4 id="读入文件-1"><a href="#读入文件-1" class="headerlink" title="读入文件"></a>读入文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.fromfile(frame, dtype=<span class="built_in">float</span>, count=-<span class="number">1</span>, sep=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件、字符串。</li>
+<li>dtype: 读取的数据类型。</li>
+<li>count: 读入元素个数，-1表示读入整个文件。</li>
+<li>sep: 数据分割字符串，如果是空串，写入文件为二进制。</li>
+</ul>
+<p>示例代码1如下：</p>
+<p><img src="/1-30.jpg" alt="1-30"></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-31.jpg" alt="1-31"></p>
+<p><em>注意：</em></p>
+<ol>
+<li><em>该方法需要读取时知道存入文件时数组的维度和元素类型。</em></li>
+<li><em>a.tofile()和np.fromfile()需要配合使用。</em></li>
+<li><em>可以通过元数据文件来存储额外信息。</em></li>
+</ol>
+<h3 id="NumPy-便捷文件存取"><a href="#NumPy-便捷文件存取" class="headerlink" title="NumPy 便捷文件存取"></a>NumPy 便捷文件存取</h3><h4 id="写入文件-2"><a href="#写入文件-2" class="headerlink" title="写入文件"></a>写入文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.save(frame, array) 或 np.savez(frame, array)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件名，以.npy为扩展名，压缩扩展名为.npz。</li>
+<li>array: 数组变量。</li>
+</ul>
+<h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.load(frame)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frame: 文件名，以.npy为扩展名，压缩扩展名为.npz。</li>
+</ul>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><p>示例代码如下：</p>
+<p><img src="/1-32.jpg" alt="1-32"></p>
+<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="随机数函数"><a href="#随机数函数" class="headerlink" title="随机数函数"></a>随机数函数</h3><p>常用 np.random 的随机数函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rand(d0, d1, …, dn)</td>
+<td>根据d0-dn创建随机数数组，浮点数，[0,1)，均匀分布</td>
+</tr>
+<tr>
+<td>randn(d0, d1, …, dn)</td>
+<td>根据d0-dn创建随机数数组，标准正态分布</td>
+</tr>
+<tr>
+<td>randint(low[, high, shape])</td>
+<td>根据shape创建随机整数或整数数组，范围是[low, high)</td>
+</tr>
+<tr>
+<td>seed(s)</td>
+<td>随机数种子，s是给定的种子值</td>
+</tr>
+<tr>
+<td>shuffle(a)</td>
+<td>根据数组a的第1轴进行随排列，改变数组x</td>
+</tr>
+<tr>
+<td>permutation(a)</td>
+<td>根据数组a的第1轴产生一个新的乱序数组，不改变数组x</td>
+</tr>
+<tr>
+<td>choice(a[, size, replace, p])</td>
+<td>从一维数组a中以概率p抽取元素，形成size形状新数组；replace表示是否可以重用元素，默认为False</td>
+</tr>
+<tr>
+<td>uniform(low, high, size)</td>
+<td>产生具有均匀分布的数组，low起始值，high结束值，size形状</td>
+</tr>
+<tr>
+<td>normal(loc, scale, size)</td>
+<td>产生具有正态分布的数组，loc均值，scale标准差，size形状</td>
+</tr>
+<tr>
+<td>poisson(lam, size)</td>
+<td>产生具有泊松分布的数组，lam随机事件发生率，size形状</td>
+</tr>
+</tbody></table>
+<p>示例代码1如下：</p>
+<p><img src="/1-33.jpg" alt="1-33"></p>
+<p><img src="/1-34.jpg" alt="1-34"></p>
+<p><img src="/1-35.jpg" alt="1-35"></p>
+<p><img src="/1-36.jpg" alt="1-36"></p>
+<p><em>当随机数种子seed相同时，生成的随机数也相同。</em></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-37.jpg" alt="1-37"></p>
+<p>示例代码3如下：</p>
+<p><img src="/1-38.jpg" alt="1-38"></p>
+<p><em>a没有发生变化</em></p>
+<p>示例代码4如下：</p>
+<p><img src="/1-39.jpg" alt="1-39"></p>
+<p><strong>In[42]</strong>: 在 [100, 200) 生成一个一维数组 b，b 有8个元素。</p>
+<p><strong>In[44]</strong>: 在b中选取元素，形成一个 3*2 维度的新数组。<em>（新数组中有 2 个 107，而原数组中只有 1 个 107）</em></p>
+<p><strong>In[46]</strong>: 使用参数 p 为每一个元素设置抽取的概率。</p>
+<p>示例代码5如下：</p>
+<p><img src="/1-40.jpg" alt="1-40"></p>
+<h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><p>常用 np 的统计函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sum(a, axis&#x3D;None)</td>
+<td>根据给定轴axis计算数组a相关元素之和，axis整数或元组</td>
+</tr>
+<tr>
+<td>mean(a, axis&#x3D;None)</td>
+<td>根据给定轴axis计算数组a相关元素的期望，axis整数或元组</td>
+</tr>
+<tr>
+<td>average(a, axis&#x3D;None, weights&#x3D;None)</td>
+<td>根据给定轴axis计算数组a相关元素的加权平均值</td>
+</tr>
+<tr>
+<td>std(a, axis&#x3D;None)</td>
+<td>格局给定轴axis计算数组a相关元素的标准差</td>
+</tr>
+<tr>
+<td>var(a, axis&#x3D;None)</td>
+<td>根据给定轴axis计算数组a相关元素的方差</td>
+</tr>
+<tr>
+<td>min(a) &#x2F; max(a)</td>
+<td>计算数组a中元素的最小值、最大值</td>
+</tr>
+<tr>
+<td>argmin(a) &#x2F; argmax(a)</td>
+<td>计算数组a中元素最小值、最大值的降一维后下标</td>
+</tr>
+<tr>
+<td>unravel_index(index, shape)</td>
+<td>根据shape将一维下标index转换成多维下标</td>
+</tr>
+<tr>
+<td>ptp(a)</td>
+<td>计算数组a中元素最大值与最小值的差</td>
+</tr>
+<tr>
+<td>median(a)</td>
+<td>计算数组a中元素 中位数（中值）</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/1-41.jpg" alt="1-41"></p>
+<p><img src="/1-42.jpg" alt="1-42"></p>
+<p><strong>In[67]</strong>: 扁平化后的下标。</p>
+<p><strong>In[68]</strong>: 重塑成多维下标。</p>
+<h3 id="梯度函数"><a href="#梯度函数" class="headerlink" title="梯度函数"></a>梯度函数</h3><p>np 的梯度函数有且只有一个，如下表：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>np.gradient(f)</td>
+<td>计算数组f中元素的梯度，当f为多维时，返回每个维度梯度</td>
+</tr>
+</tbody></table>
+<p><strong>梯度</strong>：连续值之间的变化率，即斜率。</p>
+<p>XY 坐标轴连续三个 X 坐标到对应的 Y 轴值：a，b，c。其中，b 的梯度是：(c-a)&#x2F;2。</p>
+<p>示例代码1如下：</p>
+<p><img src="/1-43.jpg" alt="1-43"></p>
+<p><strong>Out[76]</strong>: 中间三个值 [-1.5, 0, -2] 存在两侧值（例如：$-1.5&#x3D;(6-9)&#x2F;2$），而第一个数 -9 与最后一个数 2 只有一侧值（例如$2&#x3D;(2-0)&#x2F;1$）。</p>
+<p>示例代码2如下：</p>
+<p><img src="/1-44.jpg" alt="1-44"></p>
+<p><em>c是二维数组，所以 np.gradient(c) 返回了两个数组，分别对应两个不同的维度。</em></p>
+<h1 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h1><h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h2><p>图像是一个三维数组，维度分别是高度、宽度和像素RGB值。</p>
+<p>验证代码如下：</p>
+<p><img src="/1-45.jpg" alt="1-46"></p>
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p>示例代码1如下：</p>
+<p><img src="/1-46.jpg" alt="1-47"></p>
+<p>示例代码2如下：</p>
+<p><img src="/1-47.jpg" alt="1-47"></p>
+<p>示例代码3如下：</p>
+<p><img src="/1-48.jpg" alt="1-48"></p>
+<p>示例代码4如下：</p>
+<p><img src="/1-49.jpg" alt="1-49"></p>
+<h1 id="Matplotlib-库"><a href="#Matplotlib-库" class="headerlink" title="Matplotlib 库"></a>Matplotlib 库</h1><h2 id="Matplotlib-概述"><a href="#Matplotlib-概述" class="headerlink" title="Matplotlib 概述"></a>Matplotlib 概述</h2><ul>
+<li>Matplotlib 库由各种可视化类构成，内部结构复杂，受 Matlab 启发。</li>
+<li>matplotlib.pyplot 是绘制各类可视化图形的命令子库，相当于快捷方式。</li>
+</ul>
+<p>其引入方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+<p>测试代码1如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>])</span><br><span class="line">plt.ylabel(<span class="string">&quot;grade&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line3</strong>: 如果 plt.plot() 函数输入函数只有一维列表或数组时，该参数将被作为 y 轴处理，x 轴为该列表的索引。</p>
+<p>结果如下：</p>
+<p><img src="/2-1.jpg" alt="2-1"></p>
+<p>测试代码2如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>])</span><br><span class="line">plt.ylabel(<span class="string">&quot;grade&quot;</span>)</span><br><span class="line">plt.savefig(<span class="string">&quot;C:/Users/13714/Desktop/test&quot;</span>, dpi=<span class="number">600</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line5</strong>: plt.savefig() 将输出图形存储为文件，默认 PNG 格式，可以通过 dpi 修改输出质量。</p>
+<p>结果如下：</p>
+<p><img src="/2-2.jpg" alt="2-2"></p>
+<p><img src="/2-3.jpg" alt="2-3"></p>
+<p>测试代码3如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>])</span><br><span class="line">plt.ylabel(<span class="string">&quot;grade&quot;</span>)</span><br><span class="line">plt.axis([-<span class="number">1</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">6</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line3</strong>: plt.plot(x, y) 当有两个以上参数时，按照 X 轴和 Y 轴顺序绘制数据点。</p>
+<p>结果如下：</p>
+<p><img src="/2-4.jpg" alt="2-4"></p>
+<h2 id="plot-函数"><a href="#plot-函数" class="headerlink" title="plot() 函数"></a>plot() 函数</h2><h3 id="plot-函数概述"><a href="#plot-函数概述" class="headerlink" title="plot() 函数概述"></a>plot() 函数概述</h3><p>plot() 函数的基本格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(x, y, format_string, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p><strong>x</strong>: X 轴数据，列表或数组，可选。</p>
+<p><strong>y</strong>: Y 轴数据，列表或数组。</p>
+<p><strong>format_string</strong>: 控制曲线的格式字符串，可选。</p>
+<p>*<em>*<em>kwargs</em></em>: 第二组或更多（x, y, format_string）</p>
+<p><em>当绘制多条曲线时，各条曲线的 x 不能省略。</em></p>
+<p>plot() 函数绘制多条曲线的示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">t</span>):</span><br><span class="line">    <span class="keyword">return</span> np.exp(-t) * np.cos(<span class="number">2</span>*np.pi*t)</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line">plt.plot(a, a*<span class="number">1.5</span>, a, a*<span class="number">2.5</span>, a, a*<span class="number">3.5</span>, a, a*<span class="number">4.5</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-5.jpg" alt="2-5"></p>
+<h3 id="format-string-参数"><a href="#format-string-参数" class="headerlink" title="format_string 参数"></a>format_string 参数</h3><p>format_string 是控制曲线的格式字符串，由颜色字符、风格字符和标记字符组成。</p>
+<p>常用<strong>颜色字符</strong>如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">颜色字符</th>
+<th align="left">说明</th>
+<th align="center">颜色字符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘b’</td>
+<td align="left">蓝色</td>
+<td align="center">‘m’</td>
+<td align="left">洋红色 magenta</td>
+</tr>
+<tr>
+<td align="center">‘g’</td>
+<td align="left">绿色</td>
+<td align="center">‘y’</td>
+<td align="left">黄色</td>
+</tr>
+<tr>
+<td align="center">‘r’</td>
+<td align="left">红色</td>
+<td align="center">‘k’</td>
+<td align="left">黑色</td>
+</tr>
+<tr>
+<td align="center">‘c’</td>
+<td align="left">青绿色cyan</td>
+<td align="center">‘w’</td>
+<td align="left">白色</td>
+</tr>
+<tr>
+<td align="center">‘#008000’</td>
+<td align="left">RGB某颜色</td>
+<td align="center">‘0.8’</td>
+<td align="left">灰度值字符串</td>
+</tr>
+</tbody></table>
+<p>常用<strong>风格字符</strong>如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">风格字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘-‘</td>
+<td>实线</td>
+</tr>
+<tr>
+<td align="center">‘–’</td>
+<td>破折线</td>
+</tr>
+<tr>
+<td align="center">‘-.’</td>
+<td>点划线</td>
+</tr>
+<tr>
+<td align="center">‘:’</td>
+<td>虚线</td>
+</tr>
+<tr>
+<td align="center">‘ ‘ &#x2F; ‘’  (空格或空串)</td>
+<td>无线条</td>
+</tr>
+</tbody></table>
+<p>显示效果如下图所示：</p>
+<p><img src="/2-6.jpg" alt="2-6"></p>
+<p>常用<strong>标记字符</strong>如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">标记字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘.’</td>
+<td>点标记</td>
+</tr>
+<tr>
+<td align="center">‘,’</td>
+<td>像素标记（极小点）</td>
+</tr>
+<tr>
+<td align="center">‘o’</td>
+<td>实心圈标记</td>
+</tr>
+<tr>
+<td align="center">‘v’</td>
+<td>倒三角标记</td>
+</tr>
+<tr>
+<td align="center">‘^’</td>
+<td>上三角标记</td>
+</tr>
+<tr>
+<td align="center">‘&gt;’</td>
+<td>右三角标记</td>
+</tr>
+<tr>
+<td align="center">‘&lt;’</td>
+<td>左三角标记</td>
+</tr>
+<tr>
+<td align="center">‘1’</td>
+<td>下花三角标记</td>
+</tr>
+<tr>
+<td align="center">‘2’</td>
+<td>上花三角标记</td>
+</tr>
+<tr>
+<td align="center">‘3’</td>
+<td>左花三角标记</td>
+</tr>
+<tr>
+<td align="center">‘4’</td>
+<td>右花三角标记</td>
+</tr>
+<tr>
+<td align="center">‘s’</td>
+<td>实心方形标记</td>
+</tr>
+<tr>
+<td align="center">‘p’</td>
+<td>实心五角标记</td>
+</tr>
+<tr>
+<td align="center">‘*’</td>
+<td>星形标记</td>
+</tr>
+<tr>
+<td align="center">‘h’</td>
+<td>竖六边形标记</td>
+</tr>
+<tr>
+<td align="center">‘H’</td>
+<td>横六边形标记</td>
+</tr>
+<tr>
+<td align="center">‘+’</td>
+<td>十字标记</td>
+</tr>
+<tr>
+<td align="center">‘x’</td>
+<td>x标记</td>
+</tr>
+<tr>
+<td align="center">‘D’</td>
+<td>菱形标记</td>
+</tr>
+<tr>
+<td align="center">‘d’</td>
+<td>瘦菱形标记</td>
+</tr>
+<tr>
+<td align="center">‘|’</td>
+<td>垂直线标记</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line">plt.plot(a, a*<span class="number">1.5</span>, <span class="string">&#x27;go-&#x27;</span>, a, a*<span class="number">2.5</span>, <span class="string">&#x27;rx&#x27;</span>, a, a*<span class="number">3.5</span>, <span class="string">&#x27;*&#x27;</span>, a, a*<span class="number">4.5</span>, <span class="string">&#x27;b-.&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line5</strong>: ‘go-‘表示该线采用绿色，每个点用实心圆表示，使用实线作为标记线；’rx’’表示该线采用红色，每个点用×表示，不画出标记线；’*’表示每个点用星形表示，由于没有指定颜色，系统将自动将没出现过的颜色分配给它；’b-.’表示该线采用蓝色，使用点划线作为标记线。</p>
+<p>结果如下：</p>
+<p><img src="/2-9.jpg" alt="2-9"></p>
+<h3 id="kwargs-参数"><a href="#kwargs-参数" class="headerlink" title="**kwargs 参数"></a>**kwargs 参数</h3><p>**kwargs 是第二组或更多参数（x, y, format_string）。</p>
+<p>常见的更多参数有：</p>
+<p><strong>color</strong>: 控制颜色，color&#x3D;”green”</p>
+<p><strong>linestyle</strong>: 线条风格，linestyle&#x3D;”dashed”</p>
+<p><strong>marker</strong>: 标记风格，marker&#x3D;’o’</p>
+<p><strong>markerfacecolor</strong>: 标记颜色，markerfacecolor&#x3D;’blue’</p>
+<p><strong>markersize</strong>: 标记尺寸，markersize&#x3D;20</p>
+<h2 id="pyplot-中文显示"><a href="#pyplot-中文显示" class="headerlink" title="pyplot 中文显示"></a>pyplot 中文显示</h2><h3 id="reParams"><a href="#reParams" class="headerlink" title="reParams"></a>reParams</h3><p>pyplot 并不默认支持中文显示，可以通过 reParams 修改全局字体。</p>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;font.family&#x27;</span>]=<span class="string">&#x27;SimHei&#x27;</span></span><br><span class="line">plt.plot([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>])</span><br><span class="line">plt.ylabel(<span class="string">&quot;纵轴（值）&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line4</strong>: 修改字体为黑体（SimHei）。</p>
+<p>结果如下：</p>
+<p><img src="/2-10.jpg" alt="2-10"></p>
+<p>rcParams 的常用属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘font.family’</td>
+<td>用于显示字体的名称</td>
+</tr>
+<tr>
+<td>‘font.style’</td>
+<td>字体风格，正常“normal”或斜体“italic”</td>
+</tr>
+<tr>
+<td>‘font.size’</td>
+<td>字体大小，整数字号或者“large”、“x-small”</td>
+</tr>
+</tbody></table>
+<p>‘font.family’ 的常用中文字体值如下：</p>
+<table>
+<thead>
+<tr>
+<th>中文字体</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘SimHei’</td>
+<td>中文黑体</td>
+</tr>
+<tr>
+<td>‘Kaiti’</td>
+<td>中文楷体</td>
+</tr>
+<tr>
+<td>‘LiSu’</td>
+<td>中文隶书</td>
+</tr>
+<tr>
+<td>‘FangSong’</td>
+<td>中文仿宋</td>
+</tr>
+<tr>
+<td>‘YouYuan’</td>
+<td>中文幼圆</td>
+</tr>
+<tr>
+<td>‘STSong’</td>
+<td>华文宋体</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;font.family&#x27;</span>]=<span class="string">&#x27;STSong&#x27;</span></span><br><span class="line">matplotlib.rcParams[<span class="string">&#x27;font.size&#x27;</span>]=<span class="number">20</span></span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;横轴：时间&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;纵轴：振幅&quot;</span>)</span><br><span class="line">plt.plot(a, np.cos(<span class="number">2</span>*np.pi*a), <span class="string">&quot;r--&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-11.jpg" alt="2-11"></p>
+<h3 id="fontproperties-参数"><a href="#fontproperties-参数" class="headerlink" title="fontproperties 参数"></a>fontproperties 参数</h3><p>使用 fontproperties 参数不会改变其他字体，仅改变当前文本函数的字体。</p>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;横轴：时间&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;纵轴：振幅&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.plot(a, np.cos(<span class="number">2</span>*np.pi*a), <span class="string">&quot;r--&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-12.jpg" alt="2-12"></p>
+<h2 id="文本显示函数"><a href="#文本显示函数" class="headerlink" title="文本显示函数"></a>文本显示函数</h2><p>常用的文本显示函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>plt.xlabel()</td>
+<td>对X轴增加文本标签</td>
+</tr>
+<tr>
+<td>plt.ylabel()</td>
+<td>对Y轴增加文本标签</td>
+</tr>
+<tr>
+<td>plt.title()</td>
+<td>对图形整体增加文本标签</td>
+</tr>
+<tr>
+<td>plt.text()</td>
+<td>在任意位置增加文本</td>
+</tr>
+<tr>
+<td>plt.annotate()</td>
+<td>在图形中增加带箭头的注解</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.02</span>)</span><br><span class="line">plt.plot(a, np.cos(<span class="number">2</span>*np.pi*a), <span class="string">&quot;r--&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;横轴：时间&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>, color=<span class="string">&quot;green&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;纵轴：振幅&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">r&quot;正弦波实例 $y=cos(2\pi x)$&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">25</span>)</span><br><span class="line">plt.text(<span class="number">2</span>, <span class="number">1</span>, <span class="string">r&quot;$\mu=100$&quot;</span>, fontsize=<span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">plt.axis([-<span class="number">1</span>, <span class="number">6</span>, -<span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line10</strong>: 在 x&#x3D;2，y&#x3D;1 的位置显示字符串，字号为15。</p>
+<p><strong>Line13</strong>: 开启图中的网格线。</p>
+<p>结果如下：</p>
+<p><img src="/2-13.jpg" alt="2-13"></p>
+<p>plt.annotate() 函数调用方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(s, xy=arrow_crd, xytext=text_crd, arrowprops=<span class="built_in">dict</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>s</strong>: 要注解的字符串</p>
+<p><strong>xy</strong>: 箭头所在的位置</p>
+<p><strong>xytext</strong>: 文本显示的位置</p>
+<p><strong>arrowprops</strong>: 定义了箭头显示的一些属性</p>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.02</span>)</span><br><span class="line">plt.plot(a, np.cos(<span class="number">2</span>*np.pi*a), <span class="string">&quot;r--&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;横轴：时间&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>, color=<span class="string">&quot;green&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;纵轴：振幅&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.title(<span class="string">r&quot;正弦波实例 $y=cos(2\pi x)$&quot;</span>, fontproperties=<span class="string">&quot;SimHei&quot;</span>, fontsize=<span class="number">25</span>)</span><br><span class="line">plt.annotate(<span class="string">r&quot;$\mu=100$&quot;</span>, xy=(<span class="number">2</span>, <span class="number">1</span>), xytext=(<span class="number">3</span>, <span class="number">1.5</span>), arrowprops=<span class="built_in">dict</span>(facecolor=<span class="string">&quot;black&quot;</span>, shrink=<span class="number">0.1</span>, width=<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">plt.axis([-<span class="number">1</span>, <span class="number">6</span>, -<span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line10</strong>: arrowprops 中，facecolor 表示箭头的颜色，shrink 表示箭头到指的位置与文本位置都有 0.1 比例的空白，width 表示箭头的宽度。</p>
+<p>结果如下：</p>
+<p><img src="/2-14.jpg" alt="2-14"></p>
+<h2 id="子绘图区域"><a href="#子绘图区域" class="headerlink" title="子绘图区域"></a>子绘图区域</h2><h3 id="subplot-函数"><a href="#subplot-函数" class="headerlink" title="subplot() 函数"></a>subplot() 函数</h3><p>subplot() 函数能在全局绘图区域中创建一个分区体系，并定位到一个子绘图区域。 </p>
+<p>subplot() 函数基本格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(nrows,ncols,plot_number)</span><br></pre></td></tr></table></figure>
+
+<p><strong>nrows</strong>: 行数</p>
+<p><strong>ncols</strong>: 列数</p>
+<p><strong>plot_number</strong>: 所在区域</p>
+<p>例如以下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>) 或</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其图像将显示在子区域4，如下图：</p>
+<p><img src="/2-7.jpg" alt="2-7"></p>
+<p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">t</span>):</span><br><span class="line">    <span class="keyword">return</span> np.exp(-t) * np.cos(<span class="number">2</span>*np.pi*t)</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(a, f(a))</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">plt.plot(a, np.cos(<span class="number">2</span>*np.pi*a), <span class="string">&quot;r--&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-8.jpg" alt="2-8"></p>
+<h3 id="subplot2grid-函数"><a href="#subplot2grid-函数" class="headerlink" title="subplot2grid() 函数"></a>subplot2grid() 函数</h3><p>理念：设定网格，选中网格，确定选中行列区域数量，编号从0开始。</p>
+<p>subplot2grid() 函数的基本格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot2grid(GridSpec, CurSpec, colspan=<span class="number">1</span>, rowspan=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>例如，有如下布局：</p>
+<p><img src="/2-15.jpg" alt="2-15"></p>
+<p>若要选中 ax2，则代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">0</span>), colspan=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>(3, 3)</strong>: 将图形分为 3 行 3 列的区域</p>
+<p><strong>(1, 0)</strong>: 选定第一行，第零列</p>
+<p><strong>colspan</strong>: 在列的方向上，延申 2 个长度</p>
+<p>则上述布局分别选中每块区域的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">0</span>, <span class="number">0</span>), colspan=<span class="number">3</span>)		<span class="comment"># ax1</span></span><br><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">0</span>), colspan=<span class="number">1</span>)		<span class="comment"># ax2</span></span><br><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">2</span>), colspan=<span class="number">2</span>)		<span class="comment"># ax3</span></span><br><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">2</span>, <span class="number">0</span>))			   <span class="comment"># ax4</span></span><br><span class="line">plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">2</span>, <span class="number">1</span>))			   <span class="comment"># ax5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GridSpec-类"><a href="#GridSpec-类" class="headerlink" title="GridSpec 类"></a>GridSpec 类</h3><p>示例代码如下（以上述布局为例）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.gridspec <span class="keyword">as</span> gridspec</span><br><span class="line"></span><br><span class="line">gs = gridspec.GridSpec(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">ax1 = plt.subplot(gs[<span class="number">0</span>, :])</span><br><span class="line">ax2 = plt.subplot(gs[<span class="number">1</span>, :-<span class="number">1</span>])</span><br><span class="line">ax3 = plt.subplot(gs[<span class="number">1</span>:, -<span class="number">1</span>])</span><br><span class="line">ax4 = plt.subplot(gs[<span class="number">2</span>, <span class="number">0</span>])</span><br><span class="line">ax5 = plt.subplot(gs[<span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="pyplot-绘制图表"><a href="#pyplot-绘制图表" class="headerlink" title="pyplot 绘制图表"></a>pyplot 绘制图表</h2><h3 id="基本图表函数"><a href="#基本图表函数" class="headerlink" title="基本图表函数"></a>基本图表函数</h3><p>pyplot 基础图表函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>plt.plot(x, y, fmt, …)</td>
+<td>绘制一个坐标图</td>
+</tr>
+<tr>
+<td>plt.boxplot(data, notch, position)</td>
+<td>绘制一个箱型图</td>
+</tr>
+<tr>
+<td>plt.bar(left, height, width, bottom)</td>
+<td>绘制一个条形图</td>
+</tr>
+<tr>
+<td>plt.barh(width, bottom, left, right)</td>
+<td>绘制一个横向条形图</td>
+</tr>
+<tr>
+<td>plt.polar(theta, r)</td>
+<td>绘制极坐标图</td>
+</tr>
+<tr>
+<td>plt.pie(data, explore)</td>
+<td>绘制饼图</td>
+</tr>
+<tr>
+<td>plt.psd(x, NFFT&#x3D;256, pad_to, Fs)</td>
+<td>绘制功率谱密度图</td>
+</tr>
+<tr>
+<td>plt.specgram(x, NFFT&#x3D;256, pad_to, F)</td>
+<td>绘制谱图</td>
+</tr>
+<tr>
+<td>plt.cohere(x, y, NFFT&#x3D;256, Fs)</td>
+<td>绘制X-Y的相关性函数</td>
+</tr>
+<tr>
+<td>plt.scatter(x, y)</td>
+<td>绘制散点图，其中，x和y长度相同</td>
+</tr>
+<tr>
+<td>plt.step(x, y, where)</td>
+<td>绘制步阶图</td>
+</tr>
+<tr>
+<td>plt.hist(x, bins, normed)</td>
+<td>绘制直方图</td>
+</tr>
+<tr>
+<td>plt.contour(X, Y, Z, N)</td>
+<td>绘制等值图</td>
+</tr>
+<tr>
+<td>plt.vlines()</td>
+<td>绘制垂直图</td>
+</tr>
+<tr>
+<td>plt.stem(x, y, linefmt, markerfmt)</td>
+<td>绘制柴火图</td>
+</tr>
+<tr>
+<td>plt.plot_date()</td>
+<td>绘制数据日期</td>
+</tr>
+</tbody></table>
+<h3 id="pie-饼图绘制"><a href="#pie-饼图绘制" class="headerlink" title="pie 饼图绘制"></a>pie 饼图绘制</h3><p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">labels = <span class="string">&quot;Frogs&quot;</span>, <span class="string">&quot;Hogs&quot;</span>, <span class="string">&quot;Dogs&quot;</span>, <span class="string">&quot;Logs&quot;</span></span><br><span class="line">sizes = [<span class="number">15</span>, <span class="number">30</span>, <span class="number">45</span>, <span class="number">10</span>]</span><br><span class="line">explode = (<span class="number">0</span>, <span class="number">0.1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">plt.pie(sizes, explode=explode, labels=labels, autopct=<span class="string">&quot;%1.1f%%&quot;</span>, shadow=<span class="literal">False</span>, startangle=<span class="number">90</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Line3</strong>: 饼图的标签</p>
+<p><strong>Line4</strong>: 每个标签所对应的饼块的尺寸</p>
+<p><strong>Line5</strong>: 将“Hogs”突出显示，突出显示的比例为0.1</p>
+<p><strong>Line7</strong>: 使用 pie 函数绘制饼图。autopct 表示图中显示百分数的方式。shadow 表示该饼图是一个二维饼图还是带阴影的饼图。startangle 表示饼图的起始角度。</p>
+<p>结果如下：</p>
+<p><img src="/2-16.jpg" alt="2-16"></p>
+<h3 id="hist-直方图绘制"><a href="#hist-直方图绘制" class="headerlink" title="hist 直方图绘制"></a>hist 直方图绘制</h3><p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">mu, sigma = <span class="number">100</span>, <span class="number">20</span></span><br><span class="line">a = np.random.normal(mu, sigma, size=<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">plt.hist(a, <span class="number">20</span>, density=<span class="literal">True</span>, histtype=<span class="string">&quot;stepfilled&quot;</span>, facecolor=<span class="string">&#x27;b&#x27;</span>, alpha=<span class="number">0.75</span>)</span><br><span class="line">plt.title(<span class="string">&quot;Histogram&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-17.jpg" alt="2-17"></p>
+<h3 id="极坐标图"><a href="#极坐标图" class="headerlink" title="极坐标图"></a>极坐标图</h3><p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">N = <span class="number">20</span></span><br><span class="line">theta = np.linspace(<span class="number">0.0</span>, <span class="number">2</span> * np.pi, N, endpoint=<span class="literal">False</span>)</span><br><span class="line">radii = <span class="number">10</span> * np.random.rand(N)</span><br><span class="line">width = np.pi / <span class="number">4</span> * np.random.rand(N)</span><br><span class="line"></span><br><span class="line">ax = plt.subplot(<span class="number">111</span>, projection=<span class="string">&quot;polar&quot;</span>)</span><br><span class="line">bars = ax.bar(theta, radii, width=width, bottom=<span class="number">0.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r, bar <span class="keyword">in</span> <span class="built_in">zip</span>(radii, bars):</span><br><span class="line">    bar.set_facecolor(plt.cm.viridis(r / <span class="number">10.</span>))</span><br><span class="line">    bar.set_alpha(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><em>该代码并未采用 plt.polar() 函数，而是采用了面向对象的方式绘制极坐标图。</em></p>
+<p>结果如下：</p>
+<p><img src="/2-18.jpg" alt="2-18"></p>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(<span class="number">10</span>*np.random.randn(<span class="number">100</span>), <span class="number">10</span>*np.random.randn(<span class="number">100</span>), <span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&quot;Simple Scatter&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><em>面向对象方法绘制散点图</em></p>
+<p>结果如下：</p>
+<p><img src="/2-19.jpg" alt="2-19"></p>
+<h1 id="Pandas-库"><a href="#Pandas-库" class="headerlink" title="Pandas 库"></a>Pandas 库</h1><h2 id="Pandas-概述"><a href="#Pandas-概述" class="headerlink" title="Pandas 概述"></a>Pandas 概述</h2><p>Pandas 是 Python 第三方库，提供高性能易用数据类型和分析工具。</p>
+<p>Pandas 库的引用方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<p>Pandas 库主要提供了两个数据类型：Series, DataFrame。</p>
+<ul>
+<li>Series &#x3D; 索引 + 一维数据</li>
+<li>DataFrame &#x3D; 行列索引 + 二维数据</li>
+</ul>
+<p>理解数据类型于索引的关系，操作索引即操作数据。</p>
+<p>测试代码如下：</p>
+<p><img src="/3-1.jpg" alt="3-1"></p>
+<p><img src="/3-2.jpg" alt="3-2"></p>
+<p>NumPy 与 Pandas 库的对比如下：</p>
+<table>
+<thead>
+<tr>
+<th>NumPy</th>
+<th>Pandas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础数据类型</td>
+<td>扩展数据类型</td>
+</tr>
+<tr>
+<td>关注数据的结构表达</td>
+<td>关注数据的应用表达</td>
+</tr>
+<tr>
+<td>维度：数据间关系</td>
+<td>数据与索引间关系</td>
+</tr>
+</tbody></table>
+<h2 id="Series-类型"><a href="#Series-类型" class="headerlink" title="Series 类型"></a>Series 类型</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Series 类型由一组数据及与之相关的数据索引组成。</p>
+<p>例如下图：</p>
+<p><img src="/3-3.jpg" alt="3-3"></p>
+<p>示例代码1如下：</p>
+<p><img src="/3-4.jpg" alt="3-4"></p>
+<p><strong>Out[7]</strong>: 左侧 0，1，2，3 为 pandas 库自动生成的自动索引；由于 pandas 库基于 NumPy，所以 dtype 为 NumPy 中的数据类型。</p>
+<p>示例代码2如下：</p>
+<p><img src="/3-5.jpg" alt="3-5"></p>
+<p><strong>In[9]</strong>: 如果索引作为 Series 函数的第二个参数，可以省略“index&#x3D;”。</p>
+<p><strong>Out[10]</strong>: 左侧 a，b，c，d 为自定义索引。</p>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>Series 类型可以由以下类型创建：</p>
+<ul>
+<li>Python 列表</li>
+<li>标量值</li>
+<li>Python 字典</li>
+<li>ndarray</li>
+<li>其他函数</li>
+</ul>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p><em>通过列表创建的示例见 Series 类型概述部分的示例。</em></p>
+<h4 id="标量值"><a href="#标量值" class="headerlink" title="标量值"></a>标量值</h4><p>示例代码如下：</p>
+<p><img src="/3-6.jpg" alt="3-6"></p>
+<p><strong>In[12]</strong>: 因为只有一个标量值，所以“index&#x3D;”不能省略。</p>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>示例代码1如下：</p>
+<p><img src="/3-7.jpg" alt="3-7"></p>
+<p>示例代码2如下：</p>
+<p><img src="/3-8.jpg" alt="3-8"></p>
+<h4 id="ndarray"><a href="#ndarray" class="headerlink" title="ndarray"></a>ndarray</h4><p>示例代码1如下：</p>
+<p><img src="/3-9.jpg" alt="3-9"></p>
+<p>示例代码2如下：</p>
+<p><img src="/3-10.jpg" alt="3-10"></p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><h4 id="索引和切片"><a href="#索引和切片" class="headerlink" title="索引和切片"></a>索引和切片</h4><p>示例代码1如下：</p>
+<p><img src="/3-11.jpg" alt="3-11"></p>
+<p><strong>In[23]</strong>: .index 获得索引。</p>
+<p><strong>In[24]</strong>: .values 获得数据。</p>
+<p><img src="/3-12.jpg" alt="3-12"></p>
+<p><strong>In[30] &amp; In[31]</strong>: 自动索引和自定义索引并存。</p>
+<p><em>两套索引并存，但不能混用。</em></p>
+<p>Series 类型的操作类似 <strong>ndarray 类型</strong>：</p>
+<ul>
+<li>索引方式相同，采用[ ]。</li>
+<li>NumPy 中运算和操作可用于 Series 类型。</li>
+<li>可以通过自定义索引的列表进行切片。</li>
+<li>可以通过自动索引进行切片，如果存在自定义索引，则一同被切片。</li>
+</ul>
+<p>示例代码2如下：</p>
+<p><img src="/3-13.jpg" alt="3-13"></p>
+<p>Series 类型的操作类似 <strong>Python 字典类型</strong>：</p>
+<ul>
+<li>通过自定义索引访问</li>
+<li>保留字 in 操作</li>
+<li>使用 .get() 方法</li>
+</ul>
+<p>示例代码3如下：</p>
+<p><img src="/3-14.jpg" alt="3-14"></p>
+<p><strong>In[50]</strong>: in 操作判断 ‘c’ 是否为 b 的自定义索引，而非判断是否为值。</p>
+<p><strong>In[51]</strong>: in 操作不会判断自动索引。</p>
+<p><strong>In[52]</strong>: 判断 b 中是否有索引 ‘f’，如果有，则将值返回，否则，返回100。</p>
+<h4 id="对齐操作"><a href="#对齐操作" class="headerlink" title="对齐操作"></a>对齐操作</h4><p>Series 类型在运算中会自动对齐不同索引的数据。</p>
+<p>示例代码如下：</p>
+<p><img src="/3-15.jpg" alt="3-15"></p>
+<p><strong>Out[56]</strong>: Series+Series，对索引值相同的值进行 ‘+’ 运算，对两个 Series 对象的元素取并集。而在并集中，某个索引只出现在其中一个 Series 对象中，则运算结果为 NaN。</p>
+<h3 id="name-属性"><a href="#name-属性" class="headerlink" title="name 属性"></a>name 属性</h3><p>Series 对象和索引都可以有一个名字，存储在属性 .name 中。</p>
+<p>示例代码如下：</p>
+<p><img src="/3-16.jpg" alt="3-16"></p>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>Series 对象可以随时修改并即刻生效。</p>
+<p>示例代码如下：</p>
+<p><img src="/3-17.jpg" alt="3-17"></p>
+<h2 id="DataFrame-类型"><a href="#DataFrame-类型" class="headerlink" title="DataFrame 类型"></a>DataFrame 类型</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>DataFrame 类型是由共用相同索引的一组列组成。</p>
+<ul>
+<li>DataFrame 是一个表格型的数据类型，每列值类型可以不同。</li>
+<li>DataFrame 既有行索引、也有列索引。</li>
+<li>DataFrame 常用于表达二维数据，但可以表达多维数据。</li>
+</ul>
+<p>纵向的索引叫 index，横向的表明不同列的索引叫 column。纵向的针对每个索引的轴叫 <strong>0轴</strong>，横向的轴叫 <strong>1轴</strong>。</p>
+<p>如下图所示：</p>
+<p><img src="/3-18.jpg" alt="3-18"></p>
+<h3 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h3><p>DataFrame 类型可以由以下类型创建：</p>
+<ul>
+<li>二维 ndarray 对象</li>
+<li>由一维 ndarray、列表、字典、元组或Series构成的字典</li>
+<li>Series 类型</li>
+<li>其他的 DataFrame 类型</li>
+</ul>
+<h4 id="二维-ndarray-对象"><a href="#二维-ndarray-对象" class="headerlink" title="二维 ndarray 对象"></a>二维 ndarray 对象</h4><p>示例代码如下：</p>
+<p><img src="/3-19.jpg" alt="3-19"></p>
+<p><strong>Out[78]</strong>: 左侧自动生成了行索引，上方自动生成了列索引。自动生成的索引都是从 0 开始的整数。</p>
+<h4 id="一维-ndarray-对象字典"><a href="#一维-ndarray-对象字典" class="headerlink" title="一维 ndarray 对象字典"></a>一维 ndarray 对象字典</h4><p>示例代码如下：</p>
+<p><img src="/3-20.jpg" alt="3-20"></p>
+<h4 id="列表类型字典"><a href="#列表类型字典" class="headerlink" title="列表类型字典"></a>列表类型字典</h4><p>示例代码如下：</p>
+<p><img src="/3-21.jpg" alt="3-21"></p>
+<h4 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h4><p>假设有如下表单：</p>
+<p><img src="/3-22.jpg" alt="3-22"></p>
+<p>则代码如下：</p>
+<p><img src="/3-23.jpg" alt="3-23"></p>
+<p><img src="/3-24.jpg" alt="3-24"></p>
+<h2 id="对数据的理解"><a href="#对数据的理解" class="headerlink" title="对数据的理解"></a>对数据的理解</h2><p><img src="/3-35.jpg" alt="3-35"></p>
+<p>有损地提取数据特征的过程。</p>
+<h2 id="数据类型操作"><a href="#数据类型操作" class="headerlink" title="数据类型操作"></a>数据类型操作</h2><p>增加或重排：重新索引</p>
+<p>删除：drop</p>
+<h3 id="reindex-重新索引"><a href="#reindex-重新索引" class="headerlink" title="reindex() 重新索引"></a>reindex() 重新索引</h3><p>.reindex() 能够改变或重排 Series 和 DataFrame 索引。</p>
+<p>示例代码1如下：</p>
+<p><img src="/3-25.jpg" alt="3-25"></p>
+<p>.reindex() 的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index, columns</td>
+<td>新的行列自定义索引</td>
+</tr>
+<tr>
+<td>fill_value</td>
+<td>重新索引中，用于填充缺失位置的值</td>
+</tr>
+<tr>
+<td>method</td>
+<td>填充方法，ffill当前值向前填充，bfill向后填充</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>最大填充量</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>默认True，生成新的对象，False时，新旧相等不复制</td>
+</tr>
+</tbody></table>
+<p>示例代码2如下：</p>
+<p><img src="/3-26.jpg" alt="3-26"></p>
+<h3 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h3><p>观察如下代码：</p>
+<p><img src="/3-27.jpg" alt="3-27"></p>
+<p>可以看出，.index 和 .columns 的类型都是 Index。Index 对象是不可修改类型。</p>
+<p>索引类型的常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.append(idx)</td>
+<td>连接另一个Index对象，产生新的Index对象</td>
+</tr>
+<tr>
+<td>.diff(idx)</td>
+<td>计算差集，产生新的Index对象</td>
+</tr>
+<tr>
+<td>.intersection(idx)</td>
+<td>计算交集</td>
+</tr>
+<tr>
+<td>.union(idx)</td>
+<td>计算并集</td>
+</tr>
+<tr>
+<td>.delete(loc)</td>
+<td>删除loc位置处的元素</td>
+</tr>
+<tr>
+<td>.insert(loc, e)</td>
+<td>在loc位置增加一个元素e</td>
+</tr>
+</tbody></table>
+<h3 id="drop-删除指定对象"><a href="#drop-删除指定对象" class="headerlink" title="drop() 删除指定对象"></a>drop() 删除指定对象</h3><p>.drop() 能够删除 Series 和 DataFrame 指定行或列索引。</p>
+<p>示例代码如下：</p>
+<p><img src="/3-28.jpg" alt="3-28"></p>
+<p><img src="/3-29.jpg" alt="3-29"></p>
+<h2 id="数据类型运算"><a href="#数据类型运算" class="headerlink" title="数据类型运算"></a>数据类型运算</h2><h3 id="算术运算法则"><a href="#算术运算法则" class="headerlink" title="算术运算法则"></a>算术运算法则</h3><p>算术运算法则主要特点如下：</p>
+<ul>
+<li>算术运算根据行列索引，补齐后运算，运算默认产生浮点数。</li>
+<li>补齐时缺项填充 NaN（空值）。</li>
+<li>二维和一维、一维和零维间为广播运算。</li>
+<li>采用 + - * &#x2F; 符号进行的二元运算产生新的对象。</li>
+</ul>
+<p>示例代码如下：</p>
+<p><img src="/3-30.jpg" alt="3-30"></p>
+<p><img src="/3-31.jpg" alt="3-31"></p>
+<p><strong>Out[9] &amp; Out[10]</strong>: fill_value 参数代替 NaN，替代后参与运算。</p>
+<p>示例代码2如下：</p>
+<p><img src="/3-32.jpg" alt="3-32"></p>
+<p><strong>Out[18]</strong>: 不同维度间为广播运算，一维 Series 默认在轴 1 参与运算。</p>
+<p><strong>Out[19]</strong>: 使用运算方法可以令一维 Series 参与轴 0 运算。</p>
+<h3 id="比较运算法则"><a href="#比较运算法则" class="headerlink" title="比较运算法则"></a>比较运算法则</h3><p>比较运算法则主要特点如下：</p>
+<ul>
+<li>比较运算只能比较相同索引的元素，不进行补齐。</li>
+<li>二维和一维、一维和零维间为广播运算。</li>
+<li>采用 &gt; &lt; &gt;&#x3D; &lt;&#x3D; &#x3D;&#x3D; !&#x3D; 等符号进行的二元运算产生布尔对象。</li>
+</ul>
+<p>示例代码1如下：</p>
+<p><img src="/3-33.jpg" alt="3-33"></p>
+<p><strong>Out[26] &amp; Out[27]</strong>: 同纬度运算，尺寸一致。</p>
+<p>示例代码2如下：</p>
+<p><img src="/3-34.jpg" alt="3-34"></p>
+<p><strong>Out[34] &amp; Out[35]</strong>: 不同维度，广播运算，默认在 1 轴。</p>
+<h2 id="数据的排序"><a href="#数据的排序" class="headerlink" title="数据的排序"></a>数据的排序</h2><h3 id="sort-index-方法"><a href="#sort-index-方法" class="headerlink" title=".sort_index() 方法"></a>.sort_index() 方法</h3><p>.sort_index() 方法在指定轴上根据<strong>索引</strong>进行排序，默认升序。</p>
+<p>调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.sort_index(axis=<span class="number">0</span>, ascending=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<p><img src="/3-36.jpg" alt="3-36"></p>
+<h3 id="sort-values-方法"><a href="#sort-values-方法" class="headerlink" title=".sort_values() 方法"></a>.sort_values() 方法</h3><p>.sort_values() 方法在指定轴上根据<strong>数值</strong>进行排序，默认升序。</p>
+<p>调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Series.sort_values(axis=<span class="number">0</span>, ascending=<span class="literal">True</span>)</span><br><span class="line">DataFrame.sort_values(by, axis=<span class="number">0</span>, ascending=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p><em>by: axis 轴上的某个索引或索引列表。</em></p>
+<p>示例代码1如下：</p>
+<p><img src="/3-37.jpg" alt="3-37"></p>
+<p><em>在排序时，NaN 统一放到排序末尾。</em></p>
+<p>示例代码2如下：</p>
+<p><img src="/3-38.jpg" alt="3-38"></p>
+<h2 id="数据的统计分析"><a href="#数据的统计分析" class="headerlink" title="数据的统计分析"></a>数据的统计分析</h2><h3 id="基本统计分析"><a href="#基本统计分析" class="headerlink" title="基本统计分析"></a>基本统计分析</h3><p>适用于 Series 和 DataFrame 类型的常用基本统计分析函数：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.sum()</td>
+<td>计算数据的总和，按0轴计算，下同</td>
+</tr>
+<tr>
+<td>.count()</td>
+<td>非NaN值的数量</td>
+</tr>
+<tr>
+<td>.mean() &#x2F; .median()</td>
+<td>计算数据的算术平均值、算术中位数</td>
+</tr>
+<tr>
+<td>.var() &#x2F; .std()</td>
+<td>计算数据的方差、标准差</td>
+</tr>
+<tr>
+<td>.min() &#x2F; .max()</td>
+<td>计算数据的最小值、最大值</td>
+</tr>
+<tr>
+<td>.describe()</td>
+<td>针对于0轴（各列）的统计汇总</td>
+</tr>
+</tbody></table>
+<p>只使用于 Series 类型的常用基本统计分析函数：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.argmin() &#x2F; .argmax()</td>
+<td>计算数据最大值、最小值所在位置的索引位置（自动索引）</td>
+</tr>
+<tr>
+<td>.idmin() &#x2F; .idmax()</td>
+<td>计算数据最大值、最小值所在位置的索引（自定义索引）</td>
+</tr>
+</tbody></table>
+<p>示例代码1如下：</p>
+<p><img src="/3-39.jpg" alt="3-39"></p>
+<p>示例代码2如下：</p>
+<p><img src="/3-40.jpg" alt="3-40"></p>
+<h3 id="累计统计分析"><a href="#累计统计分析" class="headerlink" title="累计统计分析"></a>累计统计分析</h3><h4 id="累计统计分析-1"><a href="#累计统计分析-1" class="headerlink" title="累计统计分析"></a>累计统计分析</h4><p>适用于 Series 和 DataFrame 类型的常用累计统计分析函数：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.cumsum()</td>
+<td>依次给出前1、2、…、n个数的和</td>
+</tr>
+<tr>
+<td>.cumprod()</td>
+<td>依次给出前1、2、…、n个数的积</td>
+</tr>
+<tr>
+<td>.cummax()</td>
+<td>依次给出前1、2、…、n个数的最大值</td>
+</tr>
+<tr>
+<td>.cummin()</td>
+<td>依次给出前1、2、…、n个数的最小值</td>
+</tr>
+</tbody></table>
+<p><img src="/3-41.jpg" alt="3-41"></p>
+<h4 id="滚动计算函数"><a href="#滚动计算函数" class="headerlink" title="滚动计算函数"></a>滚动计算函数</h4><p>适用于 Series 和 DataFrame 类型的常用滚动计算（窗口计算）函数：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.rolling(w).sum()</td>
+<td>依次计算相邻w个元素的和</td>
+</tr>
+<tr>
+<td>.rolling(w).mean()</td>
+<td>依次计算相邻w个元素的算术平均值</td>
+</tr>
+<tr>
+<td>.rolling(w).var()</td>
+<td>依次计算相邻w个元素的方差</td>
+</tr>
+<tr>
+<td>.rolling(w).std()</td>
+<td>依次计算相邻w个元素的标准差</td>
+</tr>
+<tr>
+<td>.rolling(w).min().max()</td>
+<td>依次计算相邻w个元素的最小值和最大值</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/3-42.jpg" alt="4-42"></p>
+<h2 id="数据的相关分析"><a href="#数据的相关分析" class="headerlink" title="数据的相关分析"></a>数据的相关分析</h2><h3 id="相关性"><a href="#相关性" class="headerlink" title="相关性"></a>相关性</h3><ul>
+<li>X 增大，Y 增大，两个变量正相关。</li>
+<li>X 增大，Y 减小，两个变量负相关。</li>
+<li>X 增大，Y 无视，两个变量不相关。</li>
+</ul>
+<p>度量两个变量的相关性，最简单的是统计学上使用的协方差公式：<br>$$<br>cov(X, Y) &#x3D; \frac{\sum_{i&#x3D;1}^{n}{(X_{i}-\overline X)(Y_{i}-\overline Y)}}{n-1}<br>$$</p>
+<ul>
+<li>协方差&gt;0，X 和 Y 正相关。</li>
+<li>协方差&lt;0，X 和 Y 负相关。</li>
+<li>协方差&#x3D;0，X 和 Y 独立无关。</li>
+</ul>
+<h3 id="Pearson-相关系数"><a href="#Pearson-相关系数" class="headerlink" title="Pearson 相关系数"></a>Pearson 相关系数</h3><p>$$<br>r&#x3D;\frac{\sum_{i&#x3D;1}^{n}{(x_{i}-\overline{x})(y_{i}-\overline{y})} }{\sqrt{\sum_{i&#x3D;1}^{n}{ {(x_{i}-\overline{x})}^{2} } } \sqrt{\sum_{i&#x3D;1}^{n}{ {(y_{i}-\overline{y})}^{2} } } }<br>$$</p>
+<p>r 的取值范围是 [-1, 1]。</p>
+<ul>
+<li>当 r 在 0.8-1.0 之间，则称二者为极强相关；</li>
+<li>当 r 在 0.6-0.8 之间，则称二者为强相关；</li>
+<li>当 r 在 0.4-0.6 之间，则称二者为中等程度相关；</li>
+<li>当 r 在 0.2-0.4 之间，则称二者为弱相关；</li>
+<li>当 r 在 0.0-0.2 之间，则称二者为极弱相关或无相关；</li>
+</ul>
+<h3 id="相关分析函数"><a href="#相关分析函数" class="headerlink" title="相关分析函数"></a>相关分析函数</h3><p>适用于 Series 和 DataFrame 类型的常用相关分析函数：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.cov()</td>
+<td>计算协方差矩阵</td>
+</tr>
+<tr>
+<td>.corr()</td>
+<td>计算相关系数矩阵，Pearson、Spearman、Kendall等系数</td>
+</tr>
+</tbody></table>
+<p>示例代码如下：</p>
+<p><img src="/3-43.jpg" alt="3-43"></p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="实例1：图像的手绘效果"><a href="#实例1：图像的手绘效果" class="headerlink" title="实例1：图像的手绘效果"></a>实例1：图像的手绘效果</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>手绘效果的特征：</p>
+<ul>
+<li>黑白灰色</li>
+<li>边界线条较重</li>
+<li>相同或相近色彩趋于白色</li>
+<li>略有光源效果</li>
+</ul>
+<h3 id="梯度的重构"><a href="#梯度的重构" class="headerlink" title="梯度的重构"></a>梯度的重构</h3><p>利用像素之间的梯度值和虚拟深度值对图像进行重构。</p>
+<p>根据灰度变化来模拟人类视觉的明暗程度。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">depth = <span class="number">10.</span>  <span class="comment"># 预设深度值为10，取值范围0-100</span></span><br><span class="line">grad = np.gradient(a)  <span class="comment"># 提取x和y方向的梯度值</span></span><br><span class="line">grad_x, grad_y = grad</span><br><span class="line">grad_x = grad_x*depth/<span class="number">100.</span>  <span class="comment"># 根据深度调整x和y方向的梯度值</span></span><br><span class="line">grad_y = grad_y*depth/<span class="number">100.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="光源效果"><a href="#光源效果" class="headerlink" title="光源效果"></a>光源效果</h3><p>光源效果模型如下：</p>
+<p><img src="/1-50.jpg" alt="1-50"></p>
+<p>根据灰度变化来模拟人类视觉的远近程度。</p>
+<ul>
+<li>设计一个位于图像斜上方的虚拟光源</li>
+<li>光源相对于图像的俯视角为 Elevation，方位角为 Azimuth</li>
+<li>建立光源对个点梯度值的影响函数</li>
+<li>运算出各点的新像素值</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vec_el = np.pi/<span class="number">2.2</span></span><br><span class="line">vec_az = np.pi/<span class="number">4.</span></span><br><span class="line">dx = np.cos(vec_el)*np.cos(vec_az)  <span class="comment"># np.cos(vec_el)为单位光线在地平面上的投影长度</span></span><br><span class="line">dy = np.cos(vec_el)*np.sin(vec_az)  <span class="comment"># dx, dy, dz是光源对x/y/z三方向的影响程度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="梯度归一化"><a href="#梯度归一化" class="headerlink" title="梯度归一化"></a>梯度归一化</h3><p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A = np.sqrt(grad_x**<span class="number">2</span> + grad_y**<span class="number">2</span> + <span class="number">1.</span>)  <span class="comment"># 构造x和y轴梯度的三维归一化单位坐标系</span></span><br><span class="line">uni_x = grad_x/A</span><br><span class="line">uni_y = grad_y/A</span><br><span class="line">uni_z = <span class="number">1.</span>/A</span><br><span class="line">b = <span class="number">255</span>*(dx*uni_x + dy*uni_y + dz*uni_z)  <span class="comment"># 梯度与光源相互作用，将梯度转化为灰度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="图像生成"><a href="#图像生成" class="headerlink" title="图像生成"></a>图像生成</h3><p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = b.clip(<span class="number">0</span>,<span class="number">255</span>)  <span class="comment"># 为避免数据越界，将生成的灰度值裁剪至0-255区间</span></span><br><span class="line">im = Image.fromarray(b.astype(<span class="string">&quot;uint8&quot;</span>))  <span class="comment"># 生成图像</span></span><br><span class="line">im.save(<span class="string">&quot;C:/Users/13714/Desktop/Python数据分析与展示/pic/Photo_change.jpg&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.asarray(Image.<span class="built_in">open</span>(<span class="string">&quot;C:/Users/13714/Desktop/Python数据分析与展示/pic/Photo.jpg&quot;</span>).convert(<span class="string">&#x27;L&#x27;</span>)).astype(<span class="string">&quot;float&quot;</span>)</span><br><span class="line"></span><br><span class="line">depth = <span class="number">10.</span>  <span class="comment"># 预设深度值为10，取值范围0-100</span></span><br><span class="line">grad = np.gradient(a)  <span class="comment"># 提取x和y方向的梯度值</span></span><br><span class="line">grad_x, grad_y = grad</span><br><span class="line">grad_x = grad_x*depth/<span class="number">100.</span>  <span class="comment"># 根据深度调整x和y方向的梯度值</span></span><br><span class="line">grad_y = grad_y*depth/<span class="number">100.</span></span><br><span class="line">A = np.sqrt(grad_x**<span class="number">2</span> + grad_y**<span class="number">2</span> + <span class="number">1.</span>)  <span class="comment"># 构造x和y轴梯度的三维归一化单位坐标系</span></span><br><span class="line">uni_x = grad_x/A</span><br><span class="line">uni_y = grad_y/A</span><br><span class="line">uni_z = <span class="number">1.</span>/A</span><br><span class="line"></span><br><span class="line">vec_el = np.pi/<span class="number">2.2</span></span><br><span class="line">vec_az = np.pi/<span class="number">4.</span></span><br><span class="line">dx = np.cos(vec_el)*np.cos(vec_az)  <span class="comment"># np.cos(vec_el)为单位光线在地平面上的投影长度</span></span><br><span class="line">dy = np.cos(vec_el)*np.sin(vec_az)  <span class="comment"># dx, dy, dz是光源对x/y/z三方向的影响程度</span></span><br><span class="line">dz = np.sin(vec_el)</span><br><span class="line"></span><br><span class="line">b = <span class="number">255</span>*(dx*uni_x + dy*uni_y + dz*uni_z)  <span class="comment"># 梯度与光源相互作用，将梯度转化为灰度</span></span><br><span class="line">b = b.clip(<span class="number">0</span>,<span class="number">255</span>)  <span class="comment"># 为避免数据越界，将生成的灰度值裁剪至0-255区间</span></span><br><span class="line"></span><br><span class="line">im = Image.fromarray(b.astype(<span class="string">&quot;uint8&quot;</span>))  <span class="comment"># 生成图像</span></span><br><span class="line">im.save(<span class="string">&quot;C:/Users/13714/Desktop/Python数据分析与展示/pic/Photo_change.jpg&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="实例2：引力波的绘制"><a href="#实例2：引力波的绘制" class="headerlink" title="实例2：引力波的绘制"></a>实例2：引力波的绘制</h2><h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><p><a target="_blank" rel="noopener" href="https://python123.io/dv/grawave.html">https://python123.io/dv/grawave.html</a></p>
+<h3 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> wavfile  <span class="comment"># 读取波形文件</span></span><br><span class="line"></span><br><span class="line">rate_h, hstrain= wavfile.read(<span class="string">r&quot;C:/Users/13714/Downloads/H1_Strain.wav&quot;</span>,<span class="string">&quot;rb&quot;</span>)</span><br><span class="line">rate_l, lstrain= wavfile.read(<span class="string">r&quot;C:/Users/13714/Downloads/L1_Strain.wav&quot;</span>,<span class="string">&quot;rb&quot;</span>)</span><br><span class="line">reftime, ref_H1 = np.genfromtxt(<span class="string">&#x27;C:/Users/13714/Downloads/wf_template.txt&#x27;</span>).transpose()</span><br><span class="line"></span><br><span class="line">htime_interval = <span class="number">1</span>/rate_h</span><br><span class="line">ltime_interval = <span class="number">1</span>/rate_l</span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 丢失信号起始点</span></span><br><span class="line">htime_len = hstrain.shape[<span class="number">0</span>]/rate_h</span><br><span class="line">htime = np.arange(-htime_len/<span class="number">2</span>, htime_len/<span class="number">2</span> , htime_interval)</span><br><span class="line">plth = fig.add_subplot(<span class="number">221</span>)</span><br><span class="line">plth.plot(htime, hstrain, <span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">plth.set_xlabel(<span class="string">&#x27;Time (seconds)&#x27;</span>)</span><br><span class="line">plth.set_ylabel(<span class="string">&#x27;H1 Strain&#x27;</span>)</span><br><span class="line">plth.set_title(<span class="string">&#x27;H1 Strain&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ltime_len = lstrain.shape[<span class="number">0</span>]/rate_l</span><br><span class="line">ltime = np.arange(-ltime_len/<span class="number">2</span>, ltime_len/<span class="number">2</span> , ltime_interval)</span><br><span class="line">pltl = fig.add_subplot(<span class="number">222</span>)</span><br><span class="line">pltl.plot(ltime, lstrain, <span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">pltl.set_xlabel(<span class="string">&#x27;Time (seconds)&#x27;</span>)</span><br><span class="line">pltl.set_ylabel(<span class="string">&#x27;L1 Strain&#x27;</span>)</span><br><span class="line">pltl.set_title(<span class="string">&#x27;L1 Strain&#x27;</span>)</span><br><span class="line"></span><br><span class="line">pltref = fig.add_subplot(<span class="number">212</span>)</span><br><span class="line">pltref.plot(reftime, ref_H1)</span><br><span class="line">pltref.set_xlabel(<span class="string">&#x27;Time (seconds)&#x27;</span>)</span><br><span class="line">pltref.set_ylabel(<span class="string">&#x27;Template Strain&#x27;</span>)</span><br><span class="line">pltref.set_title(<span class="string">&#x27;Template&#x27;</span>)</span><br><span class="line">fig.tight_layout()</span><br><span class="line"></span><br><span class="line">plt.savefig(<span class="string">&quot;Gravitational_Waves_Original.png&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line">plt.close(fig)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2-20.jpg" alt="2-20"></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="IPython-魔术命令"><a href="#IPython-魔术命令" class="headerlink" title="IPython 魔术命令"></a>IPython 魔术命令</h2><table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%magic</td>
+<td>显示所有魔术命令</td>
+</tr>
+<tr>
+<td>%hist</td>
+<td>IPython命令输入历史</td>
+</tr>
+<tr>
+<td>%pdb</td>
+<td>异常发生后自动进入调试器</td>
+</tr>
+<tr>
+<td>%reset</td>
+<td>删除当前命名空间中的全部变量或名称</td>
+</tr>
+<tr>
+<td>%who</td>
+<td>显示IPython当前命名空间中已经定义的变量</td>
+</tr>
+<tr>
+<td>%time statement</td>
+<td>给出代码的执行时间，statement表示一段代码</td>
+</tr>
+<tr>
+<td>% timeit statement</td>
+<td>多次执行代码，计算综合平均执行时间</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------您可以点击上方Github图标关注我-------------</div>
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------进入<a href="/about/" style="text-align:center;color: #ccc;font-size:14px;">About</a>页面了解更多关于BugMaker的故事-------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Artificial-Intelligence/" rel="tag"># Artificial Intelligence</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Data-Science/" rel="tag"># Data Science</a>
+              <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6MOOC/" rel="tag"># 中国大学MOOC</a>
+              <a href="/tags/Open-Course/" rel="tag"># Open Course</a>
+              <a href="/tags/NumPy/" rel="tag"># NumPy</a>
+              <a href="/tags/Matplotlib/" rel="tag"># Matplotlib</a>
+              <a href="/tags/Pandas/" rel="tag"># Pandas</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="prev" title="博客搭建">
+      <i class="fa fa-chevron-left"></i> 博客搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/14/LeetCode-938-Range%20Sum%20of%20BST/" rel="next" title="LeetCode-938-Range Sum of BST">
+      LeetCode-938-Range Sum of BST <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">课程简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E6%96%87%E4%BB%B6%E5%AE%98%E7%BD%91%E5%8F%82%E8%80%83"><span class="nav-number">1.2.</span> <span class="nav-text">库文件官网参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NumPy-%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">NumPy 库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NumPy-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">NumPy 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ndarray%EF%BC%88N%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">ndarray（N维数组对象）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">ndarray 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">ndarray 实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E5%88%9B%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.3.</span> <span class="nav-text">ndarray 创建方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.4.</span> <span class="nav-text">ndarray 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%B4%E5%BA%A6%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">维度变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">类型变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E4%B8%BA%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">转为列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">2.2.5.</span> <span class="nav-text">ndarray 索引和切片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.5.2.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">2.2.5.2.1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">2.2.5.2.2.</span> <span class="nav-text">切片</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray-%E8%BF%90%E7%AE%97"><span class="nav-number">2.2.6.</span> <span class="nav-text">ndarray 运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8E%E6%A0%87%E9%87%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.2.6.1.</span> <span class="nav-text">数组与标量之间的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.6.2.</span> <span class="nav-text">一元函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.6.3.</span> <span class="nav-text">二元函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%8F%96"><span class="nav-number">2.3.</span> <span class="nav-text">文件存取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSV%E6%96%87%E4%BB%B6%EF%BC%88%E4%B8%80%E7%BB%B4-x2F-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AD%98%E5%8F%96%EF%BC%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">CSV文件（一维&#x2F;二维数组存取）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">文件示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">读入文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AD%98%E5%8F%96"><span class="nav-number">2.3.2.</span> <span class="nav-text">多维数组存取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6-1"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5%E6%96%87%E4%BB%B6-1"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">读入文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NumPy-%E4%BE%BF%E6%8D%B7%E6%96%87%E4%BB%B6%E5%AD%98%E5%8F%96"><span class="nav-number">2.3.3.</span> <span class="nav-text">NumPy 便捷文件存取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6-2"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.3.3.</span> <span class="nav-text">示例代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.</span> <span class="nav-text">库函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.1.</span> <span class="nav-text">随机数函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.2.</span> <span class="nav-text">统计函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.3.</span> <span class="nav-text">梯度函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">3.</span> <span class="nav-text">图像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA"><span class="nav-number">3.1.</span> <span class="nav-text">表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E6%8D%A2"><span class="nav-number">3.2.</span> <span class="nav-text">变换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib-%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">Matplotlib 库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib-%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">Matplotlib 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plot-%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">plot() 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#plot-%E5%87%BD%E6%95%B0%E6%A6%82%E8%BF%B0"><span class="nav-number">4.2.1.</span> <span class="nav-text">plot() 函数概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#format-string-%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.2.</span> <span class="nav-text">format_string 参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kwargs-%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.3.</span> <span class="nav-text">**kwargs 参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyplot-%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA"><span class="nav-number">4.3.</span> <span class="nav-text">pyplot 中文显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reParams"><span class="nav-number">4.3.1.</span> <span class="nav-text">reParams</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fontproperties-%E5%8F%82%E6%95%B0"><span class="nav-number">4.3.2.</span> <span class="nav-text">fontproperties 参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA%E5%87%BD%E6%95%B0"><span class="nav-number">4.4.</span> <span class="nav-text">文本显示函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BB%98%E5%9B%BE%E5%8C%BA%E5%9F%9F"><span class="nav-number">4.5.</span> <span class="nav-text">子绘图区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subplot-%E5%87%BD%E6%95%B0"><span class="nav-number">4.5.1.</span> <span class="nav-text">subplot() 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subplot2grid-%E5%87%BD%E6%95%B0"><span class="nav-number">4.5.2.</span> <span class="nav-text">subplot2grid() 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GridSpec-%E7%B1%BB"><span class="nav-number">4.5.3.</span> <span class="nav-text">GridSpec 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyplot-%E7%BB%98%E5%88%B6%E5%9B%BE%E8%A1%A8"><span class="nav-number">4.6.</span> <span class="nav-text">pyplot 绘制图表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9B%BE%E8%A1%A8%E5%87%BD%E6%95%B0"><span class="nav-number">4.6.1.</span> <span class="nav-text">基本图表函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pie-%E9%A5%BC%E5%9B%BE%E7%BB%98%E5%88%B6"><span class="nav-number">4.6.2.</span> <span class="nav-text">pie 饼图绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hist-%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%98%E5%88%B6"><span class="nav-number">4.6.3.</span> <span class="nav-text">hist 直方图绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E5%9D%90%E6%A0%87%E5%9B%BE"><span class="nav-number">4.6.4.</span> <span class="nav-text">极坐标图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">4.6.5.</span> <span class="nav-text">散点图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas-%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">Pandas 库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas-%E6%A6%82%E8%BF%B0"><span class="nav-number">5.1.</span> <span class="nav-text">Pandas 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Series-%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.2.</span> <span class="nav-text">Series 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">5.2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">5.2.2.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">5.2.2.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%87%8F%E5%80%BC"><span class="nav-number">5.2.2.2.</span> <span class="nav-text">标量值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-number">5.2.2.3.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ndarray"><span class="nav-number">5.2.2.4.</span> <span class="nav-text">ndarray</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.3.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">5.2.3.1.</span> <span class="nav-text">索引和切片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E9%BD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.3.2.</span> <span class="nav-text">对齐操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#name-%E5%B1%9E%E6%80%A7"><span class="nav-number">5.2.4.</span> <span class="nav-text">name 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">5.2.5.</span> <span class="nav-text">修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataFrame-%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.3.</span> <span class="nav-text">DataFrame 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">5.3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-1"><span class="nav-number">5.3.2.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4-ndarray-%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.3.2.1.</span> <span class="nav-text">二维 ndarray 对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4-ndarray-%E5%AF%B9%E8%B1%A1%E5%AD%97%E5%85%B8"><span class="nav-number">5.3.2.2.</span> <span class="nav-text">一维 ndarray 对象字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E7%B1%BB%E5%9E%8B%E5%AD%97%E5%85%B8"><span class="nav-number">5.3.2.3.</span> <span class="nav-text">列表类型字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.3.2.4.</span> <span class="nav-text">创建实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">5.4.</span> <span class="nav-text">对数据的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.5.</span> <span class="nav-text">数据类型操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reindex-%E9%87%8D%E6%96%B0%E7%B4%A2%E5%BC%95"><span class="nav-number">5.5.1.</span> <span class="nav-text">reindex() 重新索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.5.2.</span> <span class="nav-text">索引类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#drop-%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.5.3.</span> <span class="nav-text">drop() 删除指定对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BF%90%E7%AE%97"><span class="nav-number">5.6.</span> <span class="nav-text">数据类型运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99"><span class="nav-number">5.6.1.</span> <span class="nav-text">算术运算法则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99"><span class="nav-number">5.6.2.</span> <span class="nav-text">比较运算法则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="nav-number">5.7.</span> <span class="nav-text">数据的排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-index-%E6%96%B9%E6%B3%95"><span class="nav-number">5.7.1.</span> <span class="nav-text">.sort_index() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-values-%E6%96%B9%E6%B3%95"><span class="nav-number">5.7.2.</span> <span class="nav-text">.sort_values() 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="nav-number">5.8.</span> <span class="nav-text">数据的统计分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="nav-number">5.8.1.</span> <span class="nav-text">基本统计分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="nav-number">5.8.2.</span> <span class="nav-text">累计统计分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90-1"><span class="nav-number">5.8.2.1.</span> <span class="nav-text">累计统计分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%9A%E5%8A%A8%E8%AE%A1%E7%AE%97%E5%87%BD%E6%95%B0"><span class="nav-number">5.8.2.2.</span> <span class="nav-text">滚动计算函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="nav-number">5.9.</span> <span class="nav-text">数据的相关分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%80%A7"><span class="nav-number">5.9.1.</span> <span class="nav-text">相关性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pearson-%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="nav-number">5.9.2.</span> <span class="nav-text">Pearson 相关系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0"><span class="nav-number">5.9.3.</span> <span class="nav-text">相关分析函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B1%EF%BC%9A%E5%9B%BE%E5%83%8F%E7%9A%84%E6%89%8B%E7%BB%98%E6%95%88%E6%9E%9C"><span class="nav-number">6.1.</span> <span class="nav-text">实例1：图像的手绘效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">6.1.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E7%9A%84%E9%87%8D%E6%9E%84"><span class="nav-number">6.1.2.</span> <span class="nav-text">梯度的重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E6%BA%90%E6%95%88%E6%9E%9C"><span class="nav-number">6.1.3.</span> <span class="nav-text">光源效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">6.1.4.</span> <span class="nav-text">梯度归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90"><span class="nav-number">6.1.5.</span> <span class="nav-text">图像生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">6.1.6.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B2%EF%BC%9A%E5%BC%95%E5%8A%9B%E6%B3%A2%E7%9A%84%E7%BB%98%E5%88%B6"><span class="nav-number">6.2.</span> <span class="nav-text">实例2：引力波的绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">6.2.1.</span> <span class="nav-text">数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IPython-%E9%AD%94%E6%9C%AF%E5%91%BD%E4%BB%A4"><span class="nav-number">7.1.</span> <span class="nav-text">IPython 魔术命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="BugMaker"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">BugMaker</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+<div id="music163player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=167595&auto=1&height=66">
+  </iframe>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/BugMakerH/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BugMakerH&#x2F;" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/hhyi2008@icloud.com" title="E-Mail → hhyi2008@icloud.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备2021039738号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BugMaker</span>
+</div>
+
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2021,12,13,02,59,34); //北京时间2021-12-12 11:59:34
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" This site has been running safely for "+/*diffYears+" 年 "+*/diffDays+" days "+diffHours+" hours "+diffMinutes+" minutes "+diffSeconds+" seconds.";
+	}
+	siteTime();
+</script><br>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+
+<!--
+<script>
+    //   自定义邮箱审核规则
+    document.body.addEventListener('click', function(e) {
+        if (e.target.classList.contains('vsubmit')) {
+            const email = document.querySelector('input[type=email]');
+            const nick = document.querySelector('input[name=nick]');
+            const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!email.value || !nick.value || !reg.test(email.value)) {
+                const str = '<div class="valert text-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>';
+                const vmark = document.querySelector('.vmark');
+                vmark.innerHTML = str;
+                vmark.style.display = 'block';
+                setTimeout(function() {
+                    vmark.style.display = 'none';
+                    vmark.innerHTML = '';
+                }, 2500);
+            }
+        }
+    })
+</script>
+-->
+
+<!--
+<script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/12/2021 11:59:34");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "This site has been running safely for "+dnum+" days. "; 
+          document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  -->
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
