@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="本文档是在 CentOS 8 最小安装下配置安装 Java 环境的笔记。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/0-1.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-1.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-2.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-3.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-4.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-5.png">
-<meta property="og:image" content="http://bugmakerh.xyz/1-6.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//0-1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-2.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-3.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-4.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-5.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1-6.png">
 <meta property="article:published_time" content="2022-01-13T00:23:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:07.069Z">
 <meta property="article:author" content="BugMaker">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="CentOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/0-1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//0-1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/13/Linux(CentOS%208)%E4%B8%8BJava%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
@@ -276,19 +276,19 @@
 <li><p>安装 wegt。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install wget</span><br></pre></td></tr></table></figure>
 
-<p><img src="/0-1.png" alt="0-1"></p>
+<p><img src="/.xyz//0-1.png" alt="0-1"></p>
 </li>
 </ol>
 <h1 id="JDK的安装与配置"><a href="#JDK的安装与配置" class="headerlink" title="JDK的安装与配置"></a>JDK的安装与配置</h1><ol>
 <li><p>进入 root 用户。</p>
-<p><img src="/1-1.png" alt="1-1"></p>
+<p><img src="/.xyz//1-1.png" alt="1-1"></p>
 </li>
 <li><p>进入 &#x2F;usr&#x2F;lib，下载安装 JDK 环境。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/lib/</span><br><span class="line">wget https://repo.huaweicloud.com/java/jdk/13+33/jdk-13_linux-x64_bin.tar.gz</span><br><span class="line">tar -zxvf jdk-13_linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
 
-<p><img src="/1-2.png" alt="1-2"></p>
-<p><img src="/1-3.png" alt="1-3"></p>
-<p><img src="/1-4.png" alt="1-4"></p>
+<p><img src="/.xyz//1-2.png" alt="1-2"></p>
+<p><img src="/.xyz//1-3.png" alt="1-3"></p>
+<p><img src="/.xyz//1-4.png" alt="1-4"></p>
 </li>
 <li><p>打开 &#x2F;etc&#x2F;profile。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
@@ -296,7 +296,7 @@
 <p>在文件末尾添加添加 JAVA_HOME 环境变量。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jdk-13</span><br></pre></td></tr></table></figure>
 
-<p><img src="/1-5.png" alt="1-5"></p>
+<p><img src="/.xyz//1-5.png" alt="1-5"></p>
 </li>
 <li><p>加载环境变量。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
@@ -304,7 +304,7 @@
 <li><p>验证 JDK 的有效性。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">&#123;JAVA_HOME&#125;/bin/java -version</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/1-6.png" alt="1-6"></p>
+<p><img src="/.xyz//1-6.png" alt="1-6"></p>
 </li>
 <li><p>安装完成。</p>
 </li>

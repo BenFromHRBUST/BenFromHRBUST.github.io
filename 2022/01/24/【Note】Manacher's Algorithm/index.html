@@ -27,12 +27,12 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="Manacher’s Algorithm is a linear algorithm used to find the longest palindromic string. It was devised in 1975 by Manacher and increased the time complexity to linearity.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.jpg">
-<meta property="og:image" content="http://bugmakerh.xyz/2.jpg">
-<meta property="og:image" content="http://bugmakerh.xyz/3.jpg">
-<meta property="og:image" content="http://bugmakerh.xyz/4.jpg">
-<meta property="og:image" content="http://bugmakerh.xyz/5.jpg">
-<meta property="og:image" content="http://bugmakerh.xyz/6.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//2.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//3.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//4.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//5.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//6.jpg">
 <meta property="article:published_time" content="2022-01-24T00:25:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:05.391Z">
 <meta property="article:author" content="BugMaker">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="Palindromic String">
 <meta property="article:tag" content="Manacher&#39;s Algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/24/%E3%80%90Note%E3%80%91Manacher's%20Algorithm/">
 
@@ -281,26 +281,26 @@
 
 <p>The time complexity is $O(n^2)$. The space complexity is $O(1)$.</p>
 <h1 id="The-Manacher’s-Algorithm"><a href="#The-Manacher’s-Algorithm" class="headerlink" title="The Manacher’s Algorithm"></a>The Manacher’s Algorithm</h1><p>We know the palindromic string has two statuses of center–the letter and the gap of two letters. To deal with the issue, I added a “<code>#</code>“ between every letter that ensures the center is at the letter. And I added “<code>^</code>“ at the beginning of the string and “<code>$</code>“ at the end of the string when we travel at the end of the string they must be unequal. Note that these three letters must be the letter that will not appear in the string.</p>
-<p><img src="/1.jpg" alt="1"></p>
+<p><img src="/.xyz//1.jpg" alt="1"></p>
 <p>First of all, we can use an array called $P$ to store the largest number expanded from the center. It also is the length of the original string cut out all the “<code>#</code>“. As shown in the figure below, at position $6$, $P[6]$ is equal to $5$, so it can expand to the left for five letters, similar to right–it was “<code>#c#b#c#b#c</code>“. When cutting out all the “<code>#</code>“ and recovering to the original, it comes “<code>cbcbc</code>“ whose length is $5$.</p>
-<p><img src="/2.jpg" alt="2"></p>
+<p><img src="/.xyz//2.jpg" alt="2"></p>
 <p>To calculate the index of the original string, note that it equals the index of $p$ minus $P[i]$ and divide $2$. For example, we know that the maximum of $P[i]$ is $5$, which means the length of the longest palindrome is $5$, the index is $6$. So the beginning index of the original string is $(6-5)&#x2F;2&#x3D;0$.</p>
 <p>Now $C$ is used to represent the center of the string, and $R$ represents the radius at the right. So, $R&#x3D;C+P[i]$. $C$ and $R$ are the most right palindrome in the loop.</p>
 <p>As the following figure, I used $i_mirror$ to represent the index of the $i^{th}$ letter about $C$. Assume now we need to calculate $P[i]$, in the naive algorithm, we only need to compare the two letter at both sides. However, the symmetry can be used in palindrome $T$. $i$’s point of symmetry about $C$ is $i_mirror$, because of $P[i_mirror]&#x3D;3$, so $P[i]$ also equals $3$.</p>
-<p><img src="/3.jpg" alt="3"></p>
+<p><img src="/.xyz//3.jpg" alt="3"></p>
 <p>But there are three statuses that $P[i]\neq P[i_mirror]$ and we need to use naive algorithm to solve: </p>
 <ol>
 <li><p>Exceeded $R$</p>
-<p><img src="/4.jpg" alt="4"></p>
+<p><img src="/.xyz//4.jpg" alt="4"></p>
 </li>
 <li><p>$P[i_mirror]$ meets the left end of the original string</p>
-<p><img src="/5.jpg" alt="5"></p>
+<p><img src="/.xyz//5.jpg" alt="5"></p>
 </li>
 <li><p>$i&#x3D;R$</p>
 </li>
 </ol>
 <p>Consider about when we need to update the $C$ and the $R$. When the $P[i]$’s right border is larger than $R$, we need to update the $C$ and the $R$. Because we must ensure $i$ is inside $R$.</p>
-<p><img src="/6.jpg" alt="6"></p>
+<p><img src="/.xyz//6.jpg" alt="6"></p>
 <p>The code shown as follow:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN=<span class="number">110010</span>;</span><br><span class="line"><span class="type">char</span> Ma[MAXN*<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> Mp[MAXN*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Manacher</span><span class="params">(<span class="type">char</span> s[],<span class="type">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> l=<span class="number">0</span>;</span><br><span class="line">    Ma[l++]=<span class="string">&#x27;^&#x27;</span>;</span><br><span class="line">    Ma[l++]=<span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        Ma[l++]=s[i];</span><br><span class="line">        Ma[l++]=<span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Ma[l]=<span class="string">&#x27;$&#x27;</span>;</span><br><span class="line">    <span class="type">int</span> mx=<span class="number">0</span>,id=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;l;i++)&#123;</span><br><span class="line">        Mp[i]=mx&gt;i?<span class="built_in">min</span>(Mp[<span class="number">2</span>*id-i],mx-i):<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(Ma[i+Mp[i]]==Ma[i-Mp[i]])</span><br><span class="line">            Mp[i]++;</span><br><span class="line">        <span class="keyword">if</span>(i+Mp[i]&gt;mx)&#123;</span><br><span class="line">            mx=i+Mp[i];</span><br><span class="line">            id=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> s[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s)==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">        <span class="built_in">Manacher</span>(s,len);</span><br><span class="line">        <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>*len+<span class="number">2</span>;i++)</span><br><span class="line">            ans=<span class="built_in">max</span>(ans,Mp[i]<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

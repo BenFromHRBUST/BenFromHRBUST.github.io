@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 1200(Minimum Absolute Difference).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 <meta property="article:published_time" content="2021-12-20T02:18:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:10.257Z">
 <meta property="article:author" content="BugMaker">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="Python">
 <meta property="article:tag" content="Array">
+<meta property="article:tag" content="Python">
 <meta property="article:tag" content="Sorting">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/20/LeetCode-1200-Minimum%20Absolute%20Difference/">
 
@@ -270,7 +270,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minimumAbsDifference</span>(<span class="params">self, arr: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        arr.sort()</span><br><span class="line">        minn = arr[-<span class="number">1</span>] - arr[<span class="number">0</span>]</span><br><span class="line">        ret = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(arr)):</span><br><span class="line">            <span class="keyword">if</span> arr[i]-arr[i-<span class="number">1</span>] == minn:</span><br><span class="line">                ret.append([arr[i-<span class="number">1</span>], arr[i]])</span><br><span class="line">            <span class="keyword">elif</span> arr[i]-arr[i-<span class="number">1</span>] &lt; minn:</span><br><span class="line">                minn = arr[i] - arr[i-<span class="number">1</span>]</span><br><span class="line">                ret = [[arr[i-<span class="number">1</span>], arr[i]]]</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>We just need to sort the array and travel all the adjacent elements to find the minimum absolute value. If two elements’ absolute value is equal to the minimum, add them to the return list; if the absolute value is less than the minimum, we need to clear the return list and then add them to it; don’t forget to update the minimum value of the array.</p>
 
     </div>
@@ -296,8 +296,8 @@
           <div class="post-tags">
               <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-              <a href="/tags/Python/" rel="tag"># Python</a>
               <a href="/tags/Array/" rel="tag"># Array</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
               <a href="/tags/Sorting/" rel="tag"># Sorting</a>
           </div>
 

@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 1725(Number Of Rectangle That Can Form The Largest Square).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.png">
 <meta property="article:published_time" content="2022-02-04T04:00:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:09.552Z">
 <meta property="article:author" content="BugMaker">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/02/04/LeetCode-1725-Number%20Of%20Rectangle%20That%20Can%20Form%20The%20Largest%20Square/">
 
@@ -269,7 +269,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[][]</span>&#125; <span class="variable">rectangles</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> countGoodRectangles = <span class="keyword">function</span>(<span class="params">rectangles</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> maxLen = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;rectangles.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        maxLen = <span class="title class_">Math</span>.<span class="title function_">max</span>(maxLen, <span class="title class_">Math</span>.<span class="title function_">min</span>(rectangles[i][<span class="number">0</span>], rectangles[i][<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;rectangles.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(rectangles[i][<span class="number">0</span>]&gt;=maxLen &amp;&amp; rectangles[i][<span class="number">1</span>]&gt;=maxLen) &#123;</span><br><span class="line">            cnt ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/1.png" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.png" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Find the $maxLen$ and calculate how many rectangles have both width and height larger than $maxLen$.</p>
 
     </div>

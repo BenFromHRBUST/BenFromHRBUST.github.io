@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 507(Perfect Number).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 <meta property="article:published_time" content="2022-01-04T13:23:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:07.970Z">
 <meta property="article:author" content="BugMaker">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/04/LeetCode-507-Perfect%20Number/">
 
@@ -269,7 +269,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">checkPerfectNumber</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tol</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sqr</span> <span class="operator">=</span> (<span class="type">int</span>)Math.sqrt(num);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=sqr; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(num%i==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i != num) &#123;</span><br><span class="line">                    tol += i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(i != <span class="number">1</span>) &#123;</span><br><span class="line">                    tol += num/i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tol==num?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>As we all know, if we have a divisor $a$ of $x$ which meets the condition that $1 \leq a \leq \sqrt{x}$. There must be a divisor is $\frac{x}{a}$. So we can find all of the divisors by finding the divisors which are between $1$ and $\sqrt{x}$.</p>
 <p>Here have some details. The divisors in the question include the $1$ but exclude the number itself.</p>
 

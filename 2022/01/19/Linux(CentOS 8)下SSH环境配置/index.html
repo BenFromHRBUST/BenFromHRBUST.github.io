@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="本文档是在 CentOS 8 最小安装下配置安装 SSH 环境的笔记。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.png">
-<meta property="og:image" content="http://bugmakerh.xyz/2.png">
-<meta property="og:image" content="http://bugmakerh.xyz/3.png">
-<meta property="og:image" content="http://bugmakerh.xyz/4.png">
-<meta property="og:image" content="http://bugmakerh.xyz/5.png">
-<meta property="og:image" content="http://bugmakerh.xyz/6.png">
-<meta property="og:image" content="http://bugmakerh.xyz/7.png">
-<meta property="og:image" content="http://bugmakerh.xyz/8.png">
-<meta property="og:image" content="http://bugmakerh.xyz/9.png">
-<meta property="og:image" content="http://bugmakerh.xyz/10.png">
-<meta property="og:image" content="http://bugmakerh.xyz/11.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//2.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//3.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//4.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//5.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//6.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//7.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//8.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//9.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//10.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//11.png">
 <meta property="article:published_time" content="2022-01-19T04:23:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:05.631Z">
 <meta property="article:author" content="BugMaker">
@@ -45,7 +45,7 @@
 <meta property="article:tag" content="CentOS">
 <meta property="article:tag" content="SSH">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/19/Linux(CentOS%208)%E4%B8%8BSSH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
@@ -280,7 +280,7 @@
 <li><p>检查系统是否安装了 openssh-server。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep openssh-server</span><br></pre></td></tr></table></figure>
 
-<p><img src="/1.png" alt="1"></p>
+<p><img src="/.xyz//1.png" alt="1"></p>
 </li>
 <li><p>已安装 openssh-server。</p>
 </li>
@@ -289,28 +289,28 @@
 <li><p>打开 &#x2F;etc&#x2F;ssh&#x2F;sshd_config。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2.png" alt="2"></p>
+<p><img src="/.xyz//2.png" alt="2"></p>
 </li>
 <li><p>开启监听端口与监听地址（删除 “<code>#</code>”）。</p>
-<p><img src="/3.png" alt="3"></p>
+<p><img src="/.xyz//3.png" alt="3"></p>
 </li>
 <li><p>开启允许远程登录。</p>
-<p><img src="/4.png" alt="4"></p>
+<p><img src="/.xyz//4.png" alt="4"></p>
 </li>
 <li><p>开启使用用户名密码来作为连接验证。</p>
-<p><img src="/5.png" alt="5"></p>
+<p><img src="/.xyz//5.png" alt="5"></p>
 </li>
 <li><p>保存文件，退出。</p>
 </li>
 <li><p>开启 sshd 服务。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service sshd start</span><br></pre></td></tr></table></figure>
 
-<p><img src="/6.png" alt="6"></p>
+<p><img src="/.xyz//6.png" alt="6"></p>
 </li>
 <li><p>检查 sshd 服务是否已经开启。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e | grep sshd</span><br></pre></td></tr></table></figure>
 
-<p><img src="/7.png" alt="7"></p>
+<p><img src="/.xyz//7.png" alt="7"></p>
 </li>
 </ol>
 <h1 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h1><ol>
@@ -323,20 +323,20 @@
 <li><p>安装 net-tools.x86_64。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools.x86_64</span><br></pre></td></tr></table></figure>
 
-<p><img src="/8.png" alt="8"></p>
+<p><img src="/.xyz//8.png" alt="8"></p>
 </li>
 <li><p>重新键入 “<code>ifconfig</code>”。</p>
-<p><img src="/9.png" alt="9"></p>
+<p><img src="/.xyz//9.png" alt="9"></p>
 </li>
 </ol>
 </li>
 <li><p>找到 IP 地址。</p>
-<p><img src="/10.png" alt="10"></p>
+<p><img src="/.xyz//10.png" alt="10"></p>
 </li>
 <li><p>在主机命令行下输入 “<code>SSH USER@IP</code>” 通过 SSH 连接 Linux。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.232.137</span><br></pre></td></tr></table></figure>
 
-<p><img src="/11.png" alt="11"></p>
+<p><img src="/.xyz//11.png" alt="11"></p>
 </li>
 <li><p>登录成功。</p>
 </li>

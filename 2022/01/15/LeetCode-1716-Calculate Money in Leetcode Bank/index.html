@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 1716(Calculate Money in Leetcode Bank).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.png">
 <meta property="article:published_time" content="2022-01-15T04:50:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T03:19:18.040Z">
 <meta property="article:author" content="BugMaker">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/15/LeetCode-1716-Calculate%20Money%20in%20Leetcode%20Bank/">
 
@@ -269,7 +269,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Integer $n</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Integer</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">totalMoney</span>(<span class="params"><span class="variable">$n</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$w</span> = <span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">floor</span>(<span class="variable">$n</span> / <span class="number">7</span>));</span><br><span class="line">        <span class="variable">$d</span> = <span class="variable">$n</span> % <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">floor</span>(((<span class="number">49</span>+<span class="number">7</span>*<span class="variable">$w</span>)*<span class="variable">$w</span>)/<span class="number">2</span>))+<span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">floor</span>(((<span class="number">2</span>*<span class="variable">$w</span>+<span class="variable">$d</span>+<span class="number">1</span>)*<span class="variable">$d</span>)/<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/1.png" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.png" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Supposed the $w$ is the number of weeks and the $d$ is the number of days out of whole weeks. </p>
 <p>Note that the the money saved in everyday of a week is an arithmetic progression which the initial term is $w+1$, the $a_n$ is $w+d$, the common difference of successive members is $1$. The the total money saved in a week is also an arithmetic progression which the initial term is $28(1+2+3+4+5+6+7)$, the $a_n$ is $28+7\times(w-1)$, the common difference of successive members is $7$.</p>
 <p>Hence, the answer is the sum of two arithmetic progression, as follows:<br>$$<br>\begin{array}{l}<br>ans	&amp;&#x3D;	&amp;{\frac{ {(w+1)+[(w+1)+(d-1)]}\times d}{2} } + {\frac{ {28+[28+7\times(w-1)]}\times w}{2} }	\<br>    &amp;&#x3D;	&amp;\frac{(49+7\times w)\times w}{2}+\frac{(2\times w+d+1)\times d}{2}<br>\end{array}<br>$$</p>

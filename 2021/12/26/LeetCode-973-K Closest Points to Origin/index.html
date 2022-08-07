@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 973(K Closest Points to Origin).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 <meta property="article:published_time" content="2021-12-26T10:45:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:07.116Z">
 <meta property="article:author" content="BugMaker">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="Priority Queue">
 <meta property="article:tag" content="Quickselect">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/26/LeetCode-973-K%20Closest%20Points%20to%20Origin/">
 
@@ -274,7 +274,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">cmp</span><span class="params">(vector&lt;<span class="type">int</span>&gt; aa, vector&lt;<span class="type">int</span>&gt; bb)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> aa[<span class="number">0</span>]*aa[<span class="number">0</span>]+aa[<span class="number">1</span>]*aa[<span class="number">1</span>] &lt; bb[<span class="number">0</span>]*bb[<span class="number">0</span>]+bb[<span class="number">1</span>]*bb[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">kClosest</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; points, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(points.<span class="built_in">begin</span>(), points.<span class="built_in">end</span>(), cmp);</span><br><span class="line">        points.<span class="built_in">assign</span>(points.<span class="built_in">begin</span>(), points.<span class="built_in">begin</span>()+k);</span><br><span class="line">        <span class="keyword">return</span> points;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>I used the sort() function, which used Quicksort. And I rewrite the cmp() function to check which is closer at the Euclidean distance.</p>
 <p>P.S. I found I am more and more perfunctory in writing blogs. The words in my blogs are lesser and lesser. :joy::joy:</p>
 
