@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 310(Minimum Height Trees).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//12/16/LeetCode-310-Minimum%20Height%20Trees/1.jpg">
 <meta property="article:published_time" content="2021-12-16T12:21:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:08.904Z">
 <meta property="article:author" content="BugMaker">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="Breadth-First Search">
 <meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//12/16/LeetCode-310-Minimum%20Height%20Trees/1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/16/LeetCode-310-Minimum%20Height%20Trees/">
 
@@ -236,14 +236,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 20:21:00" itemprop="dateCreated datePublished" datetime="2021-12-16T20:21:00+08:00">2021-12-16</time>
+              <time title="Created: 2021-12-16 12:21:00" itemprop="dateCreated datePublished" datetime="2021-12-16T12:21:00+00:00">2021-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:08" itemprop="dateModified" datetime="2022-08-07T10:16:08+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:08" itemprop="dateModified" datetime="2022-08-07T03:16:08+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,7 +271,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">	<span class="comment">// structure of nodes</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">S</span> &#123;</span><br><span class="line">        <span class="type">int</span> p;</span><br><span class="line">        <span class="type">int</span> step;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findMinHeightTrees</span><span class="params">(<span class="type">int</span> n, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; edges)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Define variable and initialize them</span></span><br><span class="line">        <span class="type">int</span> vis[n];</span><br><span class="line">        queue&lt;S&gt; Q;</span><br><span class="line">        <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>()) Q.<span class="built_in">pop</span>();</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; G[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) G[i].<span class="built_in">clear</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Create the Graph in adjacency matrix</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;edges.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            G[edges[i][<span class="number">0</span>]].<span class="built_in">push_back</span>(edges[i][<span class="number">1</span>]);</span><br><span class="line">            G[edges[i][<span class="number">1</span>]].<span class="built_in">push_back</span>(edges[i][<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Find leaves and put them in the queue.</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(G[i].<span class="built_in">size</span>() == <span class="number">1</span>) &#123;</span><br><span class="line">                Q.<span class="built_in">push</span>(S&#123;i, <span class="number">0</span>&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            vis[i] = G[i].<span class="built_in">size</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// BFS</span></span><br><span class="line">        <span class="type">int</span> las = <span class="number">-1</span>;	<span class="comment">// last step</span></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; RET;</span><br><span class="line">        RET.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span>(!Q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            S now = Q.<span class="built_in">front</span>();</span><br><span class="line">            Q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(now.step != las) &#123;</span><br><span class="line">                las = now.step;</span><br><span class="line">                RET.<span class="built_in">clear</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            RET.<span class="built_in">push_back</span>(now.p);</span><br><span class="line">            <span class="type">int</span> sz = G[now.p].<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;sz; i++) &#123;</span><br><span class="line">                vis[G[now.p][i]] --;</span><br><span class="line">                <span class="keyword">if</span>(vis[G[now.p][i]] == <span class="number">1</span>) &#123;	<span class="comment">// All the edges have visited.</span></span><br><span class="line">                    Q.<span class="built_in">push</span>(S&#123;G[now.p][i], now.step+<span class="number">1</span>&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> RET;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//12/16/LeetCode-310-Minimum%20Height%20Trees/1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Obviously, this problem is a search algorithm. We all know that the minimum depth of the node will stay in the middle of the tree. So we can use BFS to find the middle nodes. But, there is an issue that in the classic BFS, we always put the node in the queue when we first meet the node. However, in this problem, we need to put them in the queue after all the edges which connect with them are visited. To deal with it, I changed the vis array. I didn’t store whether the node has been visited in it. Instead, I stored how many edges had not been visited. If the edges connecting the nodes are all visited, then put them in the queue.</p>
 
     </div>
@@ -395,7 +395,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -408,7 +408,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -445,7 +445,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

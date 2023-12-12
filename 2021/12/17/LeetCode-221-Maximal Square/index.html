@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 221(Maximal Square).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//12/17/LeetCode-221-Maximal%20Square/1.jpg">
 <meta property="article:published_time" content="2021-12-17T05:39:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:09.298Z">
 <meta property="article:author" content="BugMaker">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="Array">
 <meta property="article:tag" content="Matrix">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//12/17/LeetCode-221-Maximal%20Square/1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/17/LeetCode-221-Maximal%20Square/">
 
@@ -236,14 +236,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-17 13:39:00" itemprop="dateCreated datePublished" datetime="2021-12-17T13:39:00+08:00">2021-12-17</time>
+              <time title="Created: 2021-12-17 05:39:00" itemprop="dateCreated datePublished" datetime="2021-12-17T05:39:00+00:00">2021-12-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:09" itemprop="dateModified" datetime="2022-08-07T10:16:09+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:09" itemprop="dateModified" datetime="2022-08-07T03:16:09+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,7 +271,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maximalSquare</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> m = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> dp[n][m];</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">            cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    cnt ++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    cnt = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[i][j] = cnt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> maxn = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;m; j++) &#123;</span><br><span class="line">                <span class="type">int</span> minn = dp[i][j];</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=j; k&gt;=<span class="number">0</span>; k--) &#123;</span><br><span class="line">                    minn = <span class="built_in">min</span>(minn, dp[i][k]);</span><br><span class="line">                    <span class="type">int</span> l = <span class="built_in">min</span>((j-k+<span class="number">1</span>), minn);</span><br><span class="line">                    maxn = <span class="built_in">max</span>(maxn, l*l);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//12/17/LeetCode-221-Maximal%20Square/1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>It’s  clearly that we need to find how many “1” is connected in each cell. So we may call to mind DP.</p>
 <p>In my code, I use DP to calculate the consecutive “1” in each cell on the column. And then, I use a loop with a depth of three; the outer layout is used to iterate columns; the middle one is used to iterate lines; and the inner used to iterate the columns, which have been iterated to find the minimally consecutive “1” of the cell. Finally, multiply them.</p>
 
@@ -396,7 +396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -409,7 +409,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -446,7 +446,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

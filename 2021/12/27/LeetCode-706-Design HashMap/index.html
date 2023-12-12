@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 706(Design HashMap).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//12/27/LeetCode-706-Design%20HashMap/1.jpg">
 <meta property="article:published_time" content="2021-12-27T08:45:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:07.640Z">
 <meta property="article:author" content="BugMaker">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="Hash Table">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//12/27/LeetCode-706-Design%20HashMap/1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/27/LeetCode-706-Design%20HashMap/">
 
@@ -235,14 +235,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-27 16:45:00" itemprop="dateCreated datePublished" datetime="2021-12-27T16:45:00+08:00">2021-12-27</time>
+              <time title="Created: 2021-12-27 08:45:00" itemprop="dateCreated datePublished" datetime="2021-12-27T08:45:00+00:00">2021-12-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:07" itemprop="dateModified" datetime="2022-08-07T10:16:07+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:07" itemprop="dateModified" datetime="2022-08-07T03:16:07+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyHashMap</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.sz = <span class="number">0</span></span><br><span class="line">        self.key = []</span><br><span class="line">        self.value = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        pos = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.sz):</span><br><span class="line">            <span class="keyword">if</span> self.key[i] == key:</span><br><span class="line">                pos = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> pos</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, key: <span class="built_in">int</span>, value: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        pos = self.search(key)</span><br><span class="line">        <span class="keyword">if</span> pos != -<span class="number">1</span>:</span><br><span class="line">            self.value[pos] = value</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.key.append(key)</span><br><span class="line">        self.value.append(value)</span><br><span class="line">        self.sz += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        pos = self.search(key)</span><br><span class="line">        <span class="keyword">if</span> pos == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.value[pos]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">remove</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        pos = self.search(key)</span><br><span class="line">        <span class="keyword">if</span> pos == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.key.pop(pos)</span><br><span class="line">        self.value.pop(pos)</span><br><span class="line">        self.sz -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = MyHashMap()</span></span><br><span class="line"><span class="comment"># obj.put(key,value)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key)</span></span><br><span class="line"><span class="comment"># obj.remove(key)</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//12/27/LeetCode-706-Design%20HashMap/1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>I used Contiguous List to solve this problem.</p>
 
     </div>
@@ -393,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -443,7 +443,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

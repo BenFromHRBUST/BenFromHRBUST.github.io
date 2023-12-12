@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 441(Arranging Coins).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//01/23/LeetCode-441-Arranging%20Coins/1.png">
 <meta property="article:published_time" content="2022-01-23T14:46:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:08.127Z">
 <meta property="article:author" content="BugMaker">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Binary Search">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//01/23/LeetCode-441-Arranging%20Coins/1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/23/LeetCode-441-Arranging%20Coins/">
 
@@ -235,14 +235,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-01-23 22:46:00" itemprop="dateCreated datePublished" datetime="2022-01-23T22:46:00+08:00">2022-01-23</time>
+              <time title="Created: 2022-01-23 14:46:00" itemprop="dateCreated datePublished" datetime="2022-01-23T14:46:00+00:00">2022-01-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:08" itemprop="dateModified" datetime="2022-08-07T10:16:08+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:08" itemprop="dateModified" datetime="2022-08-07T03:16:08+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">check</span><span class="params">(<span class="type">long</span> x, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> ((<span class="number">1</span>+x)*x)/<span class="number">2</span> &gt; n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">arrangeCoins</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">long</span> <span class="variable">r</span> <span class="operator">=</span> (<span class="number">1l</span>&lt;&lt;<span class="number">31</span>)-<span class="number">1</span>;</span><br><span class="line">        <span class="type">long</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">mid</span> <span class="operator">=</span> (l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(mid, n)) &#123;</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Integer.valueOf(String.valueOf(ans));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.png" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//01/23/LeetCode-441-Arranging%20Coins/1.png" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>We know that the staircase is an arithmetic progression. So I used binary search to find the answer, and the check() function used the summing formula to check the $mid$.</p>
 
     </div>
@@ -393,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -443,7 +443,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

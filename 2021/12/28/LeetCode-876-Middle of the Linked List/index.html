@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 825(Friends of Appropriate Ages).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//12/28/LeetCode-876-Middle%20of%20the%20Linked%20List/1.jpg">
 <meta property="article:published_time" content="2021-12-28T04:50:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:07.273Z">
 <meta property="article:author" content="BugMaker">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="Array">
 <meta property="article:tag" content="Linked List">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//12/28/LeetCode-876-Middle%20of%20the%20Linked%20List/1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2021/12/28/LeetCode-876-Middle%20of%20the%20Linked%20List/">
 
@@ -235,14 +235,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-28 12:50:00" itemprop="dateCreated datePublished" datetime="2021-12-28T12:50:00+08:00">2021-12-28</time>
+              <time title="Created: 2021-12-28 04:50:00" itemprop="dateCreated datePublished" datetime="2021-12-28T04:50:00+00:00">2021-12-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:07" itemprop="dateModified" datetime="2022-08-07T10:16:07+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:07" itemprop="dateModified" datetime="2022-08-07T03:16:07+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">travel</span><span class="params">(ListNode* head, <span class="type">int</span> cnt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head-&gt;next==<span class="literal">nullptr</span>) <span class="keyword">return</span> cnt;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">travel</span>(head-&gt;next, cnt+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">ListNode* <span class="title">find</span><span class="params">(ListNode* head, <span class="type">int</span> cnt, <span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt==key) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">find</span>(head-&gt;next, cnt+<span class="number">1</span>, key);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = <span class="built_in">travel</span>(head, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">find</span>(head, <span class="number">1</span>, len/<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//12/28/LeetCode-876-Middle%20of%20the%20Linked%20List/1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>I created the travel() function to calculate the length of the list. And use the find() function to find the middle of the list.</p>
 
     </div>
@@ -393,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -443,7 +443,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

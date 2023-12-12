@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 390(Elimination Game).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//01/02/LeetCode-390-Elimination%20Game/1.jpg">
 <meta property="article:published_time" content="2022-01-02T15:06:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:09.351Z">
 <meta property="article:author" content="BugMaker">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.jpg">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//01/02/LeetCode-390-Elimination%20Game/1.jpg">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/01/02/LeetCode-390-Elimination%20Game/">
 
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-01-02 23:06:00" itemprop="dateCreated datePublished" datetime="2022-01-02T23:06:00+08:00">2022-01-02</time>
+              <time title="Created: 2022-01-02 15:06:00" itemprop="dateCreated datePublished" datetime="2022-01-02T15:06:00+00:00">2022-01-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:09" itemprop="dateModified" datetime="2022-08-07T10:16:09+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:09" itemprop="dateModified" datetime="2022-08-07T03:16:09+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +269,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">lastRemaining</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">step</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(cnt!=<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(k%<span class="number">2</span>==<span class="number">1</span>) &#123;</span><br><span class="line">                a += step;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                a = cnt%<span class="number">2</span>==<span class="number">0</span>?a:a+step;</span><br><span class="line">            &#125;</span><br><span class="line">            k ++;</span><br><span class="line">            cnt /= <span class="number">2</span>;</span><br><span class="line">            step *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.jpg" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//01/02/LeetCode-390-Elimination%20Game/1.jpg" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>The array is always the arithmetic progression because we deleted the elements equally spaced. So we can define the initial term as $a$, and the common difference of successive members as $step$. The number of elements as $cnt$. After one operation, the $step$ becomes $step*2$, and the $cnt$ becomes $\lfloor \frac{cnt}{2} \rfloor$. The $k$ means the times of operation. And then, we can have a categorization discussion about the question.</p>
 <p>Here are the categorization discussion: </p>
 <ul>
@@ -400,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -413,7 +413,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -450,7 +450,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="BugMaker&#39;s Blog">
 <meta property="og:description" content="This is a solution of LeetCode 1414(Find the Minimum Number of Fibonacci Numbers Whose Sum is K).">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://bugmakerh.xyz/.xyz//1.png">
+<meta property="og:image" content="http://bugmakerh.xyz/.xyz//02/03/LeetCode-1414-Find%20the%20Minimum%20Number%20of%20Fibonacci%20Numbers%20Whose%20Sum%20is%20K/1.png">
 <meta property="article:published_time" content="2022-02-03T14:11:00.000Z">
 <meta property="article:modified_time" content="2022-08-07T02:16:10.040Z">
 <meta property="article:author" content="BugMaker">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//1.png">
+<meta name="twitter:image" content="http://bugmakerh.xyz/.xyz//02/03/LeetCode-1414-Find%20the%20Minimum%20Number%20of%20Fibonacci%20Numbers%20Whose%20Sum%20is%20K/1.png">
 
 <link rel="canonical" href="http://bugmakerh.xyz/2022/02/03/LeetCode-1414-Find%20the%20Minimum%20Number%20of%20Fibonacci%20Numbers%20Whose%20Sum%20is%20K/">
 
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-02-03 22:11:00" itemprop="dateCreated datePublished" datetime="2022-02-03T22:11:00+08:00">2022-02-03</time>
+              <time title="Created: 2022-02-03 14:11:00" itemprop="dateCreated datePublished" datetime="2022-02-03T14:11:00+00:00">2022-02-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-07 10:16:10" itemprop="dateModified" datetime="2022-08-07T10:16:10+08:00">2022-08-07</time>
+                <time title="Modified: 2022-08-07 03:16:10" itemprop="dateModified" datetime="2022-08-07T03:16:10+01:00">2022-08-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +269,7 @@
 
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findMinFibonacciNumbers = <span class="keyword">function</span>(<span class="params">k</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> fibonacci = <span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line">    fibonacci[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    fibonacci[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    fibonacci[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> cnt = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">while</span>(fibonacci[cnt-<span class="number">1</span>] &lt; k) &#123;</span><br><span class="line">        fibonacci[cnt] = fibonacci[cnt-<span class="number">1</span>] + fibonacci[cnt-<span class="number">2</span>];</span><br><span class="line">        cnt ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=cnt-<span class="number">1</span>; i&gt;<span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">while</span>(k&gt;=fibonacci[i]) &#123;</span><br><span class="line">            k -= fibonacci[i];</span><br><span class="line">            ans ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//1.png" alt="1"></p>
+<h1 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h1><p><img src="/.xyz//02/03/LeetCode-1414-Find%20the%20Minimum%20Number%20of%20Fibonacci%20Numbers%20Whose%20Sum%20is%20K/1.png" alt="1"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>I used greedy to solve the problem. Note that we can find all the number in Fibonacci which less than or equal to $k$, and use the maximum number in Fibonacci to be subtracted by $k$, if cannot be subtracted, then use the second largest number.</p>
 
     </div>
@@ -391,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -404,7 +404,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -441,7 +441,7 @@
 <div class="copyright">
   
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
